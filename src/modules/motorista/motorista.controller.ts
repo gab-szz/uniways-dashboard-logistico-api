@@ -1,16 +1,16 @@
-import { Controller, GET } from 'fastify-decorators';
+import { Controller, GET, Inject } from 'fastify-decorators';
 import type { FastifyRequest, FastifyReply } from 'fastify';
-import { PrismaMotoristaRepository } from './infra/prisma.motorista.repository.js';
 import { ListarMotoristasUseCase } from './domain/use-cases/listarMotoristas.use-case.js';
 
 @Controller({ route: '/motoristas' })
 export default class MotoristaController {
+  @Inject(ListarMotoristasUseCase)
+  private listarMotoristasUseCase!: ListarMotoristasUseCase;
+
   // GET /motoristas
   @GET({ url: '/' })
   async listar(_request: FastifyRequest, reply: FastifyReply) {
-    const repo = new PrismaMotoristaRepository();
-    const useCase = new ListarMotoristasUseCase(repo);
-    const motoristas = await useCase.execute();
+    const motoristas = await this.listarMotoristasUseCase.execute();
     reply.send(motoristas);
   }
 }

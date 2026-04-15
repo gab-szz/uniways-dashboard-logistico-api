@@ -1,9 +1,11 @@
+import { Service } from 'fastify-decorators';
 import { prisma } from '../../../config/prisma.js';
 import type {
   IMotoristaRepository,
   MotoristaDto,
 } from '../domain/motorista.repository.js';
 
+@Service()
 export class PrismaMotoristaRepository implements IMotoristaRepository {
   async listarTodos(): Promise<MotoristaDto[]> {
     return prisma.$queryRaw<MotoristaDto[]>`
