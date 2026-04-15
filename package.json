@@ -1,0 +1,42 @@
+{
+  "name": "uniways-dashboard-logistico",
+  "version": "1.0.0",
+  "description": "API que fornece os dados para o dashboard logístico de acompanhamento de motoristas e premiações.",
+  "license": "ISC",
+  "author": "Gabriel Silvio",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "build": "tsc",
+    "start": "node dist/src/main.js",
+    "test": "vitest",
+    "test:ui": "vitest --ui"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/js": "^10.0.1",
+    "@swc/core": "^1.15.26",
+    "@types/mssql": "^9.1.11",
+    "@types/node": "^25.6.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "globals": "^17.5.0",
+    "prettier": "^3.8.3",
+    "prisma": "^7.7.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.58.2",
+    "unplugin-swc": "^1.5.9",
+    "vitest": "^4.1.4"
+  },
+  "dependencies": {
+    "@prisma/adapter-mssql": "^7.7.0",
+    "@prisma/client": "^7.7.0",
+    "dotenv": "^17.4.2",
+    "fastify": "^5.8.5",
+    "fastify-decorators": "^3.16.1",
+    "zod": "^4.3.6"
+  }
+}

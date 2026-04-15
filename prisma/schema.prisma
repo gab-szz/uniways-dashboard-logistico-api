@@ -1,0 +1,1183 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlserver"
+}
+
+model OP_VIAGEM {
+  HANDLE                                                                         Int                              @id(map: "PK__OP_VIAGE__D1CC59CE2579C04D")
+  CENTROCUSTO                                                                    Int?
+  PROJETO                                                                        Int?
+  EHOBRIGATORIOTABELACLIENTE                                                     String?                          @db.VarChar(1)
+  EHBAIXARMERCADORIA                                                             String?                          @db.VarChar(1)
+  TERMINALCOLETAVAZIO                                                            Int?
+  TERMINALENTREGAVAZIO                                                           Int?
+  EHOBRIGATORIOTERMINALCOLETA                                                    String?                          @db.VarChar(1)
+  EHOBRIGATORIOTERMINALENTREGA                                                   String?                          @db.VarChar(1)
+  EHPERMITETERMINALCOLETA                                                        String?                          @db.VarChar(1)
+  EHPERMITETERMINALENTREGA                                                       String?                          @db.VarChar(1)
+  EHOBRIGATORIOVALEPEDAGIO                                                       String?                          @db.VarChar(1)
+  EHINFORMARVALEPEDAGIO                                                          String?                          @db.VarChar(1)
+  EHMDFESUBCONTRATADOCIOT                                                        String?                          @db.VarChar(1)
+  LOGDATACADASTRO                                                                DateTime?                        @db.DateTime
+  LOGDATAALTERACAO                                                               DateTime?                        @db.DateTime
+  LOGUSUARIOCADASTRO                                                             Int?
+  LOGUSUARIOALTERACAO                                                            Int?
+  EMPRESA                                                                        Int?
+  NUMERO                                                                         Int?
+  DATA                                                                           DateTime?                        @db.DateTime
+  DATAINICIO                                                                     DateTime?                        @db.DateTime
+  DATATERMINO                                                                    DateTime?                        @db.DateTime
+  TIPO                                                                           Int?
+  VEICULO                                                                        Int?
+  MOTORISTA                                                                      Int?
+  BENEFICIARIO                                                                   Int?
+  STATUS                                                                         Int?
+  STATUSDATA                                                                     DateTime?                        @db.DateTime
+  APROVACAOCADASTRO                                                              Int?
+  EHSUGERIRMARCADOR                                                              String?                          @db.VarChar(1)
+  EHDESGASTE                                                                     String?                          @db.VarChar(1)
+  PERCURSO                                                                       Int?
+  EHOBRIGATORIOPERCURSO                                                          String?                          @db.VarChar(1)
+  EHOBRIGATORIOROTA                                                              String?                          @db.VarChar(1)
+  EHVIAGEMVAZIA                                                                  String?                          @db.VarChar(1)
+  EHNAOGERAACERTOVIAGEM                                                          String?                          @db.VarChar(1)
+  DURACAO                                                                        Int?
+  DISTANCIAPREVISTA                                                              Decimal?                         @db.Decimal(17, 2)
+  MUNICIPIOORIGEM                                                                Int?
+  MUNICIPIODESTINO                                                               Int?
+  PREENCHERMUNICIPIODESTINO                                                      Int?
+  PREENCHERMUNICIPIOORIGEM                                                       Int?
+  DISTANCIAREALIZADA                                                             Decimal?                         @db.Decimal(17, 2)
+  EHEFETUARACOPLAGEM                                                             String?                          @db.VarChar(1)
+  ACOPLAGEM                                                                      Int?
+  OBSERVACAO                                                                     String?                          @db.Text
+  EHADIANTAMENTO                                                                 String?                          @db.VarChar(1)
+  EHSERVICO                                                                      String?                          @db.VarChar(1)
+  EHDESPESA                                                                      String?                          @db.VarChar(1)
+  EHABASTECIMENTO                                                                String?                          @db.VarChar(1)
+  EHORDEMSERVICO                                                                 String?                          @db.VarChar(1)
+  GERARACERTOVIAGEM                                                              Int?
+  EHGERAACERTOVIAGEMAUTOMATICO                                                   String?                          @db.VarChar(1)
+  EHALTERARMUNICIPIO                                                             String?                          @db.VarChar(1)
+  EHOBRIGATORIOMARCADOR                                                          String?                          @db.VarChar(1)
+  EHNAODISTANCIAZERADA                                                           String?                          @db.VarChar(1)
+  CODIGOROTAIDA                                                                  Decimal?                         @db.Decimal(15, 0)
+  EHBLOQUEARORIGEMDESTINO                                                        String?                          @db.VarChar(1)
+  EHPERMITEALTERARTIPOVEICULO                                                    String?                          @db.VarChar(1)
+  EHOBRIGATORIOINFORMARTIPOOCORR                                                 String?                          @db.VarChar(1)
+  ULTIMAPOSICAOVEICULO                                                           Int?
+  EHOBRIGATORIOOCORRENCIACHEGADA                                                 String?                          @db.VarChar(1)
+  EHMOVIMENTARSTATUSOPERACIONAL                                                  String?                          @db.VarChar(1)
+  PESOCUBADO                                                                     Decimal?                         @db.Decimal(19, 4)
+  EHVALIDARBAIXA                                                                 String?                          @db.VarChar(1)
+  NUMEROEIXOS                                                                    Int?
+  OBSERVACAOFISCAL                                                               String?                          @db.Text
+  EHUTILIZAINTEGRACAOVALEPEDAGIO                                                 String?                          @db.VarChar(1)
+  EHCAPTURARVALORPEDAGIO                                                         String?                          @db.VarChar(1)
+  EHPROPRIOCAPTURARVALORPEDAGIO                                                  String?                          @db.VarChar(1)
+  PRIORIDADE                                                                     Int?
+  EHCOMPOSICAO                                                                   String?                          @db.VarChar(1)
+  TABELA                                                                         Int?
+  LISTA                                                                          Int?
+  VALORRECEITAEXTRA                                                              Decimal?                         @db.Decimal(17, 2)
+  VALORSERVICO                                                                   Decimal?                         @db.Decimal(17, 2)
+  VALORADIANTAMENTO                                                              Decimal?                         @db.Decimal(17, 2)
+  VALORCOMPOSICAO                                                                Decimal?                         @db.Decimal(17, 2)
+  VALORDESPESA                                                                   Decimal?                         @db.Decimal(17, 2)
+  VALORABASTECIMENTO                                                             Decimal?                         @db.Decimal(17, 2)
+  VALORORDEMSERVICO                                                              Decimal?                         @db.Decimal(17, 2)
+  VALORREEMBOLSO                                                                 Decimal?                         @db.Decimal(17, 2)
+  PAGAMENTO                                                                      Int?
+  EHTABELAPRECOCLIENTE                                                           String?                          @db.VarChar(1)
+  EHALTERARTABELAPRECO                                                           String?                          @db.VarChar(1)
+  CLIENTE                                                                        Int?
+  TIPOVEICULO                                                                    Int?
+  NATUREZATRANSPORTE                                                             Int?
+  VOLUME                                                                         Decimal?                         @db.Decimal(21, 6)
+  EHRECEITA                                                                      String?                          @db.VarChar(1)
+  PERCURSOTRAJETO                                                                Int?
+  POSICAOVEICULO                                                                 Int?
+  FILIAL                                                                         Int?
+  FILIALDESTINO                                                                  Int?
+  ROTA                                                                           Int?
+  QUANTIDADEVOLUME                                                               Int?
+  PESO                                                                           Decimal?                         @db.Decimal(19, 4)
+  VALORMERCADORIA                                                                Decimal?                         @db.Decimal(17, 2)
+  VALORFRETE                                                                     Decimal?                         @db.Decimal(17, 2)
+  DATAPREVISAOTERMINO                                                            DateTime?                        @db.DateTime
+  DATAPREVISAOINICIO                                                             DateTime?                        @db.DateTime
+  EHGERADOPELAORDEMFRETE                                                         String?                          @db.VarChar(1)
+  TIPOTRANSPORTEFRACIONADO                                                       Int?
+  TIPOTRANSPORTE                                                                 Int?
+  EHEFETUACHEGADAAOEMITIR                                                        String?                          @db.VarChar(1)
+  EHEFETUAAOEMITIR                                                               String?                          @db.VarChar(1)
+  EHPERMITIRVIAGEMSEMITEMTABELA                                                  String?                          @db.VarChar(1)
+  PROPRIEDADEVEICULO                                                             Int?
+  EHOBRIGATORIOCENTROCUSTO                                                       String?                          @db.VarChar(1)
+  EHPODEALTERARCENTRCUSTOPROJETO                                                 String?                          @db.VarChar(1)
+  RNTRC                                                                          String?                          @db.VarChar(50)
+  EHOBRIGATORIOMOTORISTA                                                         String?                          @db.VarChar(1)
+  EHOBRIGATORIOVEICULO                                                           String?                          @db.VarChar(1)
+  EHOBRIGATORIODOCUMENTACAO                                                      String?                          @db.VarChar(1)
+  EHAGRUPAMENTODESTINO                                                           String?                          @db.VarChar(1)
+  EHOBRIGATORIOINTERNACIONAL                                                     String?                          @db.VarChar(1)
+  EHOBRIGATORIOMANIFESTO                                                         String?                          @db.VarChar(1)
+  EHLIBERASEMCOMPOSICAO                                                          String?                          @db.VarChar(1)
+  EHPERMITEACERTOCOMPLEMENTAR                                                    String?                          @db.VarChar(1)
+  EHLIBERADOALTERARVALOR                                                         String?                          @db.VarChar(1)
+  EHVALORPENDENTEACERTO                                                          String?                          @db.VarChar(1)
+  PESSOAVINCULADA                                                                Int?
+  EHCANCELARCOTACAO                                                              String?                          @db.VarChar(1)
+  CARREGAMENTO                                                                   Int?
+  EHGERARCARREGAMENTO                                                            String?                          @db.VarChar(1)
+  EHDISPONIVELAPP                                                                String?                          @db.VarChar(1)
+  EHNUMEROCONTROLEORDEM                                                          String?                          @db.VarChar(1)
+  MOTIVOCANCELAMENTOOLD                                                          Int?
+  TIPOFROTA                                                                      Int?
+  OBSERVACAOCANCELAMENTO                                                         String?                          @db.VarChar(1000)
+  EHLIBERADOGERARACERTOVIAGEM                                                    String?                          @db.VarChar(1)
+  VIAGEMEMBARCADOR                                                               Int?
+  EHRECALCULARGERARACERTO                                                        String?                          @db.VarChar(1)
+  EHREMOVERADIANTAMENTO                                                          String?                          @db.VarChar(1)
+  EHVALIDARLIMITEVALOR                                                           String?                          @db.VarChar(1)
+  EHTIPOVEICULOORDEM                                                             String?                          @db.VarChar(1)
+  VEICULOACOPLADO                                                                String?                          @db.VarChar(100)
+  EHIGNORARTIPOACOPLAMENTO                                                       String?                          @db.VarChar(1)
+  EHNAOVALIDAPERIODOVIAGEM                                                       String?                          @db.VarChar(1)
+  PROGRAMACAO                                                                    Int?
+  EHTIPOVEICULOMANUAL                                                            String?                          @db.VarChar(1)
+  EHTIPOVEICULOOBRIGATORIO                                                       String?                          @db.VarChar(1)
+  EHAUTOMATIZARANTESCOMPOSICAO                                                   String?                          @db.VarChar(1)
+  EHGERARMDFE                                                                    String?                          @db.VarChar(1)
+  EHPEDAGIOPADRAO                                                                String?                          @db.VarChar(1)
+  EMISSAO                                                                        DateTime?                        @db.DateTime
+  MANIFESTACAO                                                                   DateTime?                        @db.DateTime
+  MUNICIPIOTERMINO                                                               Int?
+  EHACERTOVIAGEMINDIVIDUAL                                                       String?                          @db.VarChar(1)
+  EHALTERARPEDAGIO                                                               String?                          @db.VarChar(1)
+  EHPEDAGIOCONSULTADO                                                            String?                          @db.VarChar(1)
+  NUMEROEIXOSVOLTA                                                               Int?
+  EHALTERARNUMEROEIXOS                                                           String?                          @db.VarChar(1)
+  EHPERMITEEMPRESTIMO                                                            String?                          @db.VarChar(1)
+  EHGERENCIAMENTORISCO                                                           String?                          @db.VarChar(1)
+  EHGERENCIAMENTOEFETUADO                                                        String?                          @db.VarChar(1)
+  EHCALCULARPREVISAO                                                             String?                          @db.VarChar(1)
+  EHUTILIZARCOMPOSICAOCUSTO                                                      String?                          @db.VarChar(1)
+  EHINFORMARCOMPOSICAOCUSTO                                                      String?                          @db.VarChar(1)
+  CODIGOPONTOPASSAGEM                                                            Decimal?                         @db.Decimal(15, 0)
+  CODIGOPONTOPASSAGEMRETORNO                                                     Decimal?                         @db.Decimal(15, 0)
+  EHRESPONSAVELPEDAGIO                                                           String?                          @db.VarChar(1)
+  EHFORMAPAGAMENTOPEDAGIO                                                        String?                          @db.VarChar(1)
+  EHVALORPEDAGIO                                                                 String?                          @db.VarChar(1)
+  EHMULTIPLOPEDAGIO                                                              String?                          @db.VarChar(1)
+  EHVALORORDEM                                                                   String?                          @db.VarChar(1)
+  FILIALORDEMFRETE                                                               Int?
+  EHPROGRAMACAOFINANCEIRA                                                        String?                          @db.VarChar(1)
+  EMPRESAORDEMFRETE                                                              Int?
+  EHOBRIGATORIOCOMPOSICAOCUSTO                                                   String?                          @db.VarChar(1)
+  EHMANIFESTARAOEMITIR                                                           String?                          @db.VarChar(1)
+  EHPERMITIROUTRAEMPRESADESPESA                                                  String?                          @db.VarChar(1)
+  EHPERMITIROCORRENCIAINICIOFIM                                                  String?                          @db.VarChar(1)
+  UNIDADENEGOCIO                                                                 Int?
+  PESSOACENTROCUSTO                                                              Int?
+  EHOBRIGATORIOUNIDADENEGOCIO                                                    String?                          @db.VarChar(1)
+  CONTEINER                                                                      String?                          @db.VarChar(500)
+  EHPERMITIRMESMAPREVISAO                                                        String?                          @db.VarChar(1)
+  EHPERMITIRDOCUMENTOPARCIAL                                                     String?                          @db.VarChar(1)
+  EHINCLUIRROMANEIOEMANDAMENTO                                                   String?                          @db.VarChar(1)
+  EVENTOAPROVACAO                                                                Int?
+  GRUPOETAPA                                                                     Int?
+  PERCURSOFILIALSAIDA                                                            Int?
+  EHACERTOSEMCOMPOSICAO                                                          String?                          @db.VarChar(1)
+  EHMANIFESTARINTRAMUNICIPAL                                                     String?                          @db.VarChar(1)
+  TRANSPORTADORAORDEMFRETE                                                       Int?
+  TABELAORDEMFRETE                                                               Int?
+  LISTAORDEMFRETE                                                                Int?
+  EHCALCULARPEDAGIOPRACA                                                         String?                          @db.VarChar(1)
+  EHCONTROLARCHEGADALOCAL                                                        String?                          @db.VarChar(1)
+  EHCONTROLARENTRADALOCAL                                                        String?                          @db.VarChar(1)
+  EHCONTROLARSAIDALOCAL                                                          String?                          @db.VarChar(1)
+  EHCONTROLARINICIOCARGADESCARGA                                                 String?                          @db.VarChar(1)
+  EHCONTROLATERMINOCARGADESCARGA                                                 String?                          @db.VarChar(1)
+  EHEFETUARACOPLAGEMAGREGADO                                                     String?                          @db.VarChar(1)
+  EHEFETUARACOPLAGEMTERCEIRO                                                     String?                          @db.VarChar(1)
+  EHEFETUARACOPLAGEMPROPRIO                                                      String?                          @db.VarChar(1)
+  EHOBRIGATORIODURACAOPERCURSO                                                   String?                          @db.VarChar(1)
+  MOTIVOCANCELAMENTO                                                             Int?
+  EHEMITIRAUTOMATICAMENTE                                                        String?                          @db.VarChar(1)
+  EHGERARACERTOEMPRESADOCUMENTO                                                  String?                          @db.VarChar(1)
+  DURACAOPREVISTA                                                                Decimal?                         @db.Decimal(12, 2)
+  EHCONTROLARMOVIMENTACAOLOCAL                                                   String?                          @db.VarChar(1)
+  PROXIMACOLETA                                                                  Int?
+  PROXIMAENTREGA                                                                 Int?
+  PROXIMOLOCAL                                                                   Int?
+  PROGRESSOVIAGEM                                                                Decimal?                         @db.Decimal(17, 2)
+  FILIALATUAL                                                                    Int?
+  EHVINCULARFILIALRELACIONADA                                                    String?                          @db.VarChar(1)
+  DATACOLETATERMINALVAZIO                                                        DateTime?                        @db.DateTime
+  DATAENTREGATERMINALVAZIO                                                       DateTime?                        @db.DateTime
+  EHPERMITEDATACOLETAENTREGA                                                     String?                          @db.VarChar(1)
+  EHRECALCULARMUNICIPIOTERMINO                                                   String?                          @db.VarChar(1)
+  PERCURSOTERMINO                                                                Int?
+  PERCURSOTRAJETOTERMINO                                                         Int?
+  PESSOALOCALORIGEM                                                              Int?
+  PESSOALOCALDESTINO                                                             Int?
+  ENDERECOLOCALORIGEM                                                            Int?
+  ENDERECOLOCALDESTINO                                                           Int?
+  EHRECALCULARCUSTO                                                              String?                          @db.VarChar(1)
+  REDESPACHADOR                                                                  Int?
+  VALORCOMPOSICAOCUSTO                                                           Decimal?                         @db.Decimal(17, 2)
+  SITUACAOENTREGA                                                                String?                          @db.VarChar(100)
+  EHVISUALIZARMAPA                                                               String?                          @db.VarChar(1)
+  GEOMETRIATRAJETO                                                               String?                          @db.Text
+  EHRECALCULARCOMPOSICAOTERMINO                                                  String?                          @db.VarChar(1)
+  EHOBRIGATORIODOCUMENTO                                                         String?                          @db.VarChar(1)
+  EHNAOENCERRARMDFECHEGADA                                                       String?                          @db.VarChar(1)
+  EHPERMITEALTERARBENEFICIARIO                                                   String?                          @db.VarChar(1)
+  EHNAOALTERAMARCADORSAIDA                                                       String?                          @db.VarChar(1)
+  EHPERMITIRMARCADORAPP                                                          String?                          @db.VarChar(1)
+  LINKMAPA                                                                       String?                          @db.VarChar(3000)
+  EHGERARMIC                                                                     String?                          @db.VarChar(1)
+  MANIFESTACAOINTERNACIONAL                                                      DateTime?                        @db.DateTime
+  MONITORAMENTO                                                                  Int?
+  EHMULTIPLOMOTORISTA                                                            String?                          @db.VarChar(1)
+  EHPERMITEPEDAGIOCOLETALOTACAO                                                  String?                          @db.VarChar(1)
+  NUMEROCONTROLE                                                                 String?                          @db.VarChar(50)
+  NUMEROEIXOSIDA                                                                 Int?
+  CODIGOROTAVOLTA                                                                Decimal?                         @db.Decimal(15, 0)
+  VALORFRETELIQUIDO                                                              Decimal?                         @db.Decimal(17, 2)
+  TIPOCARGA                                                                      Int?
+  EHRETORNOVAZIO                                                                 String?                          @db.VarChar(1)
+  EHTRANSPORTEALTODESEMPENHO                                                     String?                          @db.VarChar(1)
+  EHOBRIGATORIOFRETEMINIMO                                                       String?                          @db.VarChar(1)
+  EHBLOQUEARINFERIORFRETEMINIMO                                                  String?                          @db.VarChar(1)
+  EHCALCULARPREVISAOROMANEIOITEM                                                 String?                          @db.VarChar(1)
+  OPERACAOTRANSPORTE                                                             Int?
+  EHPERMITEOPERACAOTRANSPORTE                                                    String?                          @db.VarChar(1)
+  EHATUALIZARGEOLOCALIZACAO                                                      String?                          @db.VarChar(1)
+  MS_PESSOA_OP_VIAGEM_PESSOALOCALORIGEMToMS_PESSOA                               MS_PESSOA?                       @relation("OP_VIAGEM_PESSOALOCALORIGEMToMS_PESSOA", fields: [PESSOALOCALORIGEM], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_103642_1346")
+  MS_PESSOA_OP_VIAGEM_PESSOALOCALDESTINOToMS_PESSOA                              MS_PESSOA?                       @relation("OP_VIAGEM_PESSOALOCALDESTINOToMS_PESSOA", fields: [PESSOALOCALDESTINO], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_103643_1346")
+  MS_PESSOAENDERECO_OP_VIAGEM_ENDERECOLOCALORIGEMToMS_PESSOAENDERECO             MS_PESSOAENDERECO?               @relation("OP_VIAGEM_ENDERECOLOCALORIGEMToMS_PESSOAENDERECO", fields: [ENDERECOLOCALORIGEM], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_103644_1348")
+  MS_PESSOAENDERECO_OP_VIAGEM_ENDERECOLOCALDESTINOToMS_PESSOAENDERECO            MS_PESSOAENDERECO?               @relation("OP_VIAGEM_ENDERECOLOCALDESTINOToMS_PESSOAENDERECO", fields: [ENDERECOLOCALDESTINO], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_103645_1348")
+  MS_PESSOA_OP_VIAGEM_REDESPACHADORToMS_PESSOA                                   MS_PESSOA?                       @relation("OP_VIAGEM_REDESPACHADORToMS_PESSOA", fields: [REDESPACHADOR], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_103750_1346")
+  MS_PESSOA_OP_VIAGEM_MOTORISTAToMS_PESSOA                                       MS_PESSOA?                       @relation("OP_VIAGEM_MOTORISTAToMS_PESSOA", fields: [MOTORISTA], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_12575_1346")
+  MS_PESSOA_OP_VIAGEM_BENEFICIARIOToMS_PESSOA                                    MS_PESSOA?                       @relation("OP_VIAGEM_BENEFICIARIOToMS_PESSOA", fields: [BENEFICIARIO], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_12576_1346")
+  OP_STATUSVIAGEM                                                                OP_STATUSVIAGEM?                 @relation(fields: [STATUS], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_12591_1847")
+  MS_PESSOA_OP_VIAGEM_CLIENTEToMS_PESSOA                                         MS_PESSOA?                       @relation("OP_VIAGEM_CLIENTEToMS_PESSOA", fields: [CLIENTE], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_31416_1346")
+  MS_PESSOA_OP_VIAGEM_TERMINALCOLETAVAZIOToMS_PESSOA                             MS_PESSOA?                       @relation("OP_VIAGEM_TERMINALCOLETAVAZIOToMS_PESSOA", fields: [TERMINALCOLETAVAZIO], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_46389_1346")
+  MS_PESSOA_OP_VIAGEM_TERMINALENTREGAVAZIOToMS_PESSOA                            MS_PESSOA?                       @relation("OP_VIAGEM_TERMINALENTREGAVAZIOToMS_PESSOA", fields: [TERMINALENTREGAVAZIO], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_46390_1346")
+  MS_PESSOA_OP_VIAGEM_PESSOAVINCULADAToMS_PESSOA                                 MS_PESSOA?                       @relation("OP_VIAGEM_PESSOAVINCULADAToMS_PESSOA", fields: [PESSOAVINCULADA], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_54877_1346")
+  MS_PESSOA_OP_VIAGEM_PESSOACENTROCUSTOToMS_PESSOA                               MS_PESSOA?                       @relation("OP_VIAGEM_PESSOACENTROCUSTOToMS_PESSOA", fields: [PESSOACENTROCUSTO], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_75099_1346")
+  MS_PESSOA_OP_VIAGEM_TRANSPORTADORAORDEMFRETEToMS_PESSOA                        MS_PESSOA?                       @relation("OP_VIAGEM_TRANSPORTADORAORDEMFRETEToMS_PESSOA", fields: [TRANSPORTADORAORDEMFRETE], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_82737_1346")
+  OP_VIAGEMLOG                                                                   OP_VIAGEMLOG[]
+
+  @@index([PERCURSOTERMINO], map: "IDX101400")
+  @@index([PERCURSOTRAJETOTERMINO], map: "IDX101401")
+  @@index([PESSOALOCALORIGEM], map: "IDX103642")
+  @@index([PESSOALOCALDESTINO], map: "IDX103643")
+  @@index([ENDERECOLOCALORIGEM], map: "IDX103644")
+  @@index([ENDERECOLOCALDESTINO], map: "IDX103645")
+  @@index([REDESPACHADOR], map: "IDX103750")
+  @@index([MONITORAMENTO], map: "IDX106154")
+  @@index([TIPOCARGA], map: "IDX107434")
+  @@index([OPERACAOTRANSPORTE], map: "IDX108881")
+  @@index([EMPRESA], map: "IDX12560")
+  @@index([NUMERO], map: "IDX12561")
+  @@index([TIPO], map: "IDX12571")
+  @@index([VEICULO], map: "IDX12572")
+  @@index([MOTORISTA], map: "IDX12575")
+  @@index([BENEFICIARIO], map: "IDX12576")
+  @@index([STATUS], map: "IDX12591")
+  @@index([APROVACAOCADASTRO], map: "IDX12785")
+  @@index([FILIAL], map: "IDX16588")
+  @@index([FILIALDESTINO], map: "IDX16589")
+  @@index([ROTA], map: "IDX16615")
+  @@index([TIPOTRANSPORTE], map: "IDX19319")
+  @@index([TIPOTRANSPORTEFRACIONADO], map: "IDX20058")
+  @@index([MUNICIPIOORIGEM], map: "IDX24650")
+  @@index([MUNICIPIODESTINO], map: "IDX24651")
+  @@index([PREENCHERMUNICIPIODESTINO], map: "IDX24666")
+  @@index([PREENCHERMUNICIPIOORIGEM], map: "IDX24667")
+  @@index([ACOPLAGEM], map: "IDX24673")
+  @@index([GERARACERTOVIAGEM], map: "IDX24765")
+  @@index([PERCURSO], map: "IDX25068")
+  @@index([NATUREZATRANSPORTE], map: "IDX28688")
+  @@index([PERCURSOTRAJETO], map: "IDX28949")
+  @@index([POSICAOVEICULO], map: "IDX28950")
+  @@index([TABELA], map: "IDX31354")
+  @@index([LISTA], map: "IDX31355")
+  @@index([PAGAMENTO], map: "IDX31412")
+  @@index([CLIENTE], map: "IDX31416")
+  @@index([TIPOVEICULO], map: "IDX31451")
+  @@index([ULTIMAPOSICAOVEICULO], map: "IDX35864")
+  @@index([CENTROCUSTO], map: "IDX37168")
+  @@index([PROJETO], map: "IDX37169")
+  @@index([PROPRIEDADEVEICULO], map: "IDX45344")
+  @@index([TERMINALCOLETAVAZIO], map: "IDX46389")
+  @@index([TERMINALENTREGAVAZIO], map: "IDX46390")
+  @@index([PRIORIDADE], map: "IDX47624")
+  @@index([PESSOAVINCULADA], map: "IDX54877")
+  @@index([VIAGEMEMBARCADOR], map: "IDX59408")
+  @@index([TIPOFROTA], map: "IDX60089")
+  @@index([MOTIVOCANCELAMENTOOLD], map: "IDX66565")
+  @@index([CARREGAMENTO], map: "IDX66652")
+  @@index([MUNICIPIOTERMINO], map: "IDX67846")
+  @@index([PROGRAMACAO], map: "IDX73355")
+  @@index([UNIDADENEGOCIO], map: "IDX75098")
+  @@index([PESSOACENTROCUSTO], map: "IDX75099")
+  @@index([FILIALORDEMFRETE], map: "IDX80286")
+  @@index([EMPRESAORDEMFRETE], map: "IDX80312")
+  @@index([EVENTOAPROVACAO], map: "IDX80779")
+  @@index([PERCURSOFILIALSAIDA], map: "IDX80915")
+  @@index([GRUPOETAPA], map: "IDX81592")
+  @@index([TRANSPORTADORAORDEMFRETE], map: "IDX82737")
+  @@index([TABELAORDEMFRETE], map: "IDX82738")
+  @@index([LISTAORDEMFRETE], map: "IDX82739")
+  @@index([MOTIVOCANCELAMENTO], map: "IDX87471")
+  @@index([PROXIMACOLETA], map: "IDX97784")
+  @@index([PROXIMAENTREGA], map: "IDX97785")
+  @@index([PROXIMOLOCAL], map: "IDX97845")
+  @@index([FILIALATUAL], map: "IDX98142")
+}
+
+model OP_STATUSVIAGEM {
+  HANDLE                         Int                              @id(map: "PK__OP_STATU__D1CC59CE1DDF692D")
+  LOGDATACADASTRO                DateTime?                        @db.DateTime
+  LOGDATAALTERACAO               DateTime?                        @db.DateTime
+  LOGUSUARIOCADASTRO             Int?
+  LOGUSUARIOALTERACAO            Int?
+  NOME                           String?                          @db.VarChar(50)
+  ORDEM                          Int?
+  IMAGEM                         Int?
+  OP_VIAGEM                      OP_VIAGEM[]
+
+  @@index([IMAGEM], map: "IDX15182")
+}
+
+model OP_VIAGEMLOG {
+  HANDLE                   Int                       @id(map: "PK__OP_VIAGE__D1CC59CE458116D6")
+  LOGDATACADASTRO          DateTime?                 @db.DateTime
+  LOGDATAALTERACAO         DateTime?                 @db.DateTime
+  LOGUSUARIOCADASTRO       Int?
+  LOGUSUARIOALTERACAO      Int?
+  DATA                     DateTime?                 @db.DateTime
+  USUARIO                  Int?
+  TIPOMENSAGEM             Int?
+  COMPLEMENTO              String?                   @db.VarChar(150)
+  OBSERVACAO               String?                   @db.VarChar(1000)
+  VIAGEM                   Int?
+  MD_TIPOMENSAGEMAUDITORIA MD_TIPOMENSAGEMAUDITORIA? @relation(fields: [TIPOMENSAGEM], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_12701_1711")
+  OP_VIAGEM                OP_VIAGEM?                @relation(fields: [VIAGEM], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_12704_1844")
+
+  @@index([USUARIO], map: "IDX12700")
+  @@index([TIPOMENSAGEM], map: "IDX12701")
+  @@index([VIAGEM], map: "IDX12704")
+}
+
+model IN_INTEGRACAO {
+  HANDLE                                                                           Int                             @id(map: "PK__IN_INTEG__D1CC59CE85735049")
+  REFERENCIAORIGEM                                                                 Int?
+  ULTIMATENTATIVA                                                                  DateTime?                       @db.DateTime
+  SEQUENCIAL                                                                       Int?
+  PROCESSADOPOR                                                                    Int?
+  DATAULTIMOLOCK                                                                   DateTime?                       @db.DateTime
+  LOGDATACADASTRO                                                                  DateTime?                       @db.DateTime
+  LOGDATAALTERACAO                                                                 DateTime?                       @db.DateTime
+  LOGUSUARIOCADASTRO                                                               Int?
+  LOGUSUARIOALTERACAO                                                              Int?
+  ORIGEM                                                                           Int?
+  HANDLEORIGEM                                                                     Int?
+  NUMEROORIGEM                                                                     String?                         @db.VarChar(20)
+  DATA                                                                             DateTime?                       @db.DateTime
+  CANALINTEGRACAO                                                                  Int?
+  EMPRESA                                                                          Int?
+  EMPRESAWEBSERVICE                                                                Int?
+  EXPIRAEM                                                                         DateTime?                       @db.DateTime
+  FILIAL                                                                           Int?
+  MODELOMENSAGEM                                                                   Int?
+  OBJETO                                                                           Int?
+  PROCESSOINTERNO                                                                  Int?
+  PROCESSOTABELA                                                                   Int?
+  PROCESSOWEBSERVICE                                                               Int?
+  PRODUTOWEBSERVICE                                                                Int?
+  STATUS                                                                           Int?
+  STATUSDATA                                                                       DateTime?                       @db.DateTime
+  TIPOINTEGRACAO                                                                   Int?
+  NUMERO                                                                           Int?
+  PROXIMATENTATIVA                                                                 DateTime?                       @db.DateTime
+  TIPOORIGEM                                                                       String?                         @db.VarChar(200)
+  PROCESSADOEM                                                                     DateTime?                       @db.DateTime
+  QUANTIDADETENTATIVA                                                              Int?
+  OBSERVACAO                                                                       String?                         @db.VarChar(4000)
+  TIPOCONFIGURACAO                                                                 Int?
+  AGENDAMENTO                                                                      Int?
+  GRUPOAVISOFALHA                                                                  Int?
+  MODELOMENSAGEMFALHA                                                              Int?
+  TIPOEVENTOINTERNO                                                                Int?
+  EVENTOINTERNO                                                                    Int?
+  NOME                                                                             String?                         @db.VarChar(500)
+  INTEGRACAOORIGEM                                                                 Int?
+  REGISTROTABELA                                                                   Int?
+  ARQUIVO                                                                          String?                         @db.VarChar(255)
+  TIPOPROCESSAMENTO                                                                Int?
+  PROCESSOFORMULARIO                                                               Int?
+  ERRO                                                                             String?                         @db.VarChar(4000)
+  MENSAGEMERRO                                                                     String?                         @db.VarChar(4000)
+  WEBSERVICEOPERACAO                                                               Int?
+  COMANDOSQL                                                                       String?                         @db.VarChar(4000)
+  EHCOMPACTARARQUIVO                                                               String?                         @db.VarChar(1)
+  SUBDIRETORIO                                                                     Int?
+  EHMOVERARQUIVOPARASUBDIRETORIO                                                   String?                         @db.VarChar(1)
+  EHREMOVERARQUIVOSERVIDOR                                                         String?                         @db.VarChar(1)
+  DIRETORIO                                                                        String?                         @db.VarChar(2000)
+  DESTINATARIOEMAIL                                                                String?                         @db.VarChar(4000)
+  ASSUNTOEMAIL                                                                     String?                         @db.VarChar(150)
+  MENSAGEMEMAIL                                                                    String?                         @db.Text
+  ERROINTEGRACAO                                                                   Int?
+  EVENTOINTERNOERRO                                                                Int?
+  AGENDAMENTOERRO                                                                  Int?
+  DATAINICIOEXECUCAO                                                               DateTime?                       @db.DateTime
+  DATATERMINOEXECUCAO                                                              DateTime?                       @db.DateTime
+  TEMPOEXECUCAODECIMAL                                                             Decimal?                        @db.Decimal(14, 2)
+  TEMPOEXECUCAO                                                                    BigInt?
+  PID                                                                              Int?
+  EHEXECUTARPROXIMATENTATIVA                                                       String?                         @db.VarChar(1)
+  PAGINA                                                                           Int?
+  EHOBRIGATORIO                                                                    String?                         @db.VarChar(1)
+  WEBSERVICE                                                                       Int?
+  WEBSERVICEPRODUTO                                                                Int?
+  WEBSERVICEPRODUTOPROCESSO                                                        Int?
+  PROCESSANDO                                                                      Int?
+  ULTIMAATUALIZACAO                                                                DateTime?                       @db.DateTime
+  EHRETORNOWEBSERVICE200                                                           String?                         @db.VarChar(1)
+  URL                                                                              String?                         @db.VarChar(4000)
+  IN_INTEGRACAO_IN_INTEGRACAO_PROCESSANDOToIN_INTEGRACAO                           IN_INTEGRACAO?                  @relation("IN_INTEGRACAO_PROCESSANDOToIN_INTEGRACAO", fields: [PROCESSANDO], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_103403_5560")
+  other_IN_INTEGRACAO_IN_INTEGRACAO_PROCESSANDOToIN_INTEGRACAO                     IN_INTEGRACAO[]                 @relation("IN_INTEGRACAO_PROCESSANDOToIN_INTEGRACAO")
+  IN_INTEGRACAO_IN_INTEGRACAO_INTEGRACAOORIGEMToIN_INTEGRACAO                      IN_INTEGRACAO?                  @relation("IN_INTEGRACAO_INTEGRACAOORIGEMToIN_INTEGRACAO", fields: [INTEGRACAOORIGEM], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_62829_5560")
+  other_IN_INTEGRACAO_IN_INTEGRACAO_INTEGRACAOORIGEMToIN_INTEGRACAO                IN_INTEGRACAO[]                 @relation("IN_INTEGRACAO_INTEGRACAOORIGEMToIN_INTEGRACAO")
+  IN_INTEGRACAO_IN_INTEGRACAO_PROCESSADOPORToIN_INTEGRACAO                         IN_INTEGRACAO?                  @relation("IN_INTEGRACAO_PROCESSADOPORToIN_INTEGRACAO", fields: [PROCESSADOPOR], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_64046_5560")
+  other_IN_INTEGRACAO_IN_INTEGRACAO_PROCESSADOPORToIN_INTEGRACAO                   IN_INTEGRACAO[]                 @relation("IN_INTEGRACAO_PROCESSADOPORToIN_INTEGRACAO")
+
+  @@index([EXPIRAEM, STATUS], map: "<Name of Missing Index, sysname,>")
+  @@index([PROCESSANDO], map: "IDX103403")
+  @@index([ORIGEM], map: "IDX60960")
+  @@index([ORIGEM, HANDLEORIGEM], map: "IDX60960_60961")
+  @@index([DATA], map: "IDX61057")
+  @@index([CANALINTEGRACAO], map: "IDX61058")
+  @@index([EMPRESA], map: "IDX61059")
+  @@index([EMPRESAWEBSERVICE], map: "IDX61060")
+  @@index([EXPIRAEM], map: "IDX61061")
+  @@index([FILIAL], map: "IDX61062")
+  @@index([MODELOMENSAGEM], map: "IDX61064")
+  @@index([OBJETO], map: "IDX61066")
+  @@index([OBJETO, STATUS], map: "IDX61066_61071")
+  @@index([PROCESSOINTERNO], map: "IDX61067")
+  @@index([PROCESSOTABELA], map: "IDX61068")
+  @@index([PROCESSOWEBSERVICE], map: "IDX61069")
+  @@index([PRODUTOWEBSERVICE], map: "IDX61070")
+  @@index([STATUS], map: "IDX61071")
+  @@index([STATUS, DATAULTIMOLOCK], map: "IDX61071_61582")
+  @@index([TIPOINTEGRACAO], map: "IDX61073")
+  @@index([NUMERO], map: "IDX61086")
+  @@index([TIPOCONFIGURACAO], map: "IDX61108")
+  @@index([AGENDAMENTO], map: "IDX61109")
+  @@index([GRUPOAVISOFALHA], map: "IDX61110")
+  @@index([MODELOMENSAGEMFALHA], map: "IDX61111")
+  @@index([TIPOEVENTOINTERNO], map: "IDX61191")
+  @@index([EVENTOINTERNO], map: "IDX61192")
+  @@index([DATAULTIMOLOCK], map: "IDX61582")
+  @@index([INTEGRACAOORIGEM], map: "IDX62829")
+  @@index([REFERENCIAORIGEM], map: "IDX63277")
+  @@index([PROCESSADOPOR], map: "IDX64046")
+  @@index([REGISTROTABELA], map: "IDX71027")
+  @@index([TIPOPROCESSAMENTO], map: "IDX71091")
+  @@index([PROCESSOFORMULARIO], map: "IDX71128")
+  @@index([WEBSERVICEOPERACAO], map: "IDX78206")
+  @@index([SUBDIRETORIO], map: "IDX86078")
+  @@index([ERROINTEGRACAO], map: "IDX86258")
+  @@index([EVENTOINTERNOERRO], map: "IDX86259")
+  @@index([AGENDAMENTOERRO], map: "IDX86260")
+  @@index([WEBSERVICE], map: "IDX86921")
+  @@index([WEBSERVICEPRODUTO], map: "IDX86922")
+  @@index([WEBSERVICEPRODUTOPROCESSO], map: "IDX86923")
+}
+
+model MD_TIPOMENSAGEMAUDITORIA {
+  HANDLE                         Int                              @id(map: "PK__MD_TIPOM__D1CC59CE38392FEA")
+  LOGDATACADASTRO                DateTime?                        @db.DateTime
+  LOGDATAALTERACAO               DateTime?                        @db.DateTime
+  LOGUSUARIOCADASTRO             Int?
+  LOGUSUARIOALTERACAO            Int?
+  NOME                           String?                          @db.VarChar(150)
+  CODIGO                         Int?
+  MS_PESSOALOG                   MS_PESSOALOG[]
+  OP_VIAGEMLOG                   OP_VIAGEMLOG[]
+}
+
+model MS_PESSOA {
+  HANDLE                                                                                         Int                              @id(map: "PK__MS_PESSO__D1CC59CE7DA9B751")
+  SIGLA                                                                                          String?                          @db.VarChar(5)
+  EHPROSPECT                                                                                     String?                          @db.VarChar(1)
+  EHEMPRESACONCORRENTE                                                                           String?                          @db.VarChar(1)
+  CATEGORIAATIVIDADE                                                                             Int?
+  PESSOAFUNCIONARIO                                                                              Int?
+  RNTRC                                                                                          String?                          @db.VarChar(20)
+  ENDERECOFISCAL                                                                                 Int?
+  EHGERACOMISSAOMOTORISTAACERTO                                                                  String?                          @db.VarChar(1)
+  PESSOACLIENTE                                                                                  Int?
+  PESSOAFORNECEDOR                                                                               Int?
+  PESSOAMOTORISTA                                                                                Int?
+  CELULAR                                                                                        String?                          @db.VarChar(30)
+  EMAILDOCUMENTOTRANSPORTE                                                                       String?                          @db.Text
+  CARTEIRAMOTORISTA                                                                              String?                          @db.VarChar(25)
+  MATRICULA                                                                                      String?                          @db.VarChar(50)
+  EMAILDOCUMENTOELETRONICO                                                                       String?                          @db.Text
+  EHGRUPOEMPRESARIAL                                                                             String?                          @db.VarChar(1)
+  EHTECNICOMANUTENCAO                                                                            String?                          @db.VarChar(1)
+  VEICULO                                                                                        String?                          @db.VarChar(60)
+  CATEGORIARNTRC                                                                                 Int?
+  INATIVACAOPESSOA                                                                               Int?
+  NATUREZAJURIDICA                                                                               Int?
+  EHEXPEDIDORRECEBEDOR                                                                           String?                          @db.VarChar(1)
+  OBSERVACAO                                                                                     String?                          @db.Text
+  EHAGENTEVENDA                                                                                  String?                          @db.VarChar(1)
+  EHPRESTADORSERVICO                                                                             String?                          @db.VarChar(1)
+  CODIGO                                                                                         Int?
+  TIPO                                                                                           Int?
+  CNPJCPF                                                                                        String?                          @db.VarChar(18)
+  DATAINCLUSAO                                                                                   DateTime?                        @db.DateTime
+  STATUS                                                                                         Int?
+  NOME                                                                                           String?                          @db.VarChar(120)
+  APELIDO                                                                                        String?                          @db.VarChar(100)
+  LOGRADOURO                                                                                     String?                          @db.VarChar(1200)
+  CLASSIFICACAOFISCAL                                                                            Int?
+  TELEFONE                                                                                       String?                          @db.VarChar(30)
+  FAX                                                                                            String?                          @db.VarChar(30)
+  EMAIL                                                                                          String?                          @db.VarChar(100)
+  EHCLIENTE                                                                                      String?                          @db.VarChar(1)
+  EHFORNECEDOR                                                                                   String?                          @db.VarChar(1)
+  EHFUNCIONARIO                                                                                  String?                          @db.VarChar(1)
+  EHMOTORISTA                                                                                    String?                          @db.VarChar(1)
+  LOGDATACADASTRO                                                                                DateTime?                        @db.DateTime
+  LOGDATAALTERACAO                                                                               DateTime?                        @db.DateTime
+  LOGUSUARIOCADASTRO                                                                             Int?
+  LOGUSUARIOALTERACAO                                                                            Int?
+  STATUSDATA                                                                                     DateTime?                        @db.DateTime
+  APROVACAOCADASTRO                                                                              Int?
+  EHCONSTRUTORA                                                                                  String?                          @db.VarChar(1)
+  EHPORTO                                                                                        String?                          @db.VarChar(1)
+  CNAE                                                                                           Int?
+  PESSOAFILIAL                                                                                   Int?
+  CENTROCUSTO                                                                                    Int?
+  PROJETO                                                                                        Int?
+  CNPJCPFSEMMASCARA                                                                              String?                          @db.VarChar(14)
+  EHISENTOINSCRICAOESTADUAL                                                                      String?                          @db.VarChar(1)
+  C_HANDLE                                                                                       Int?
+  EHEMPRESAPEQUENOPORTE                                                                          String?                          @db.VarChar(1)
+  INSCRICAOINSS                                                                                  String?                          @db.VarChar(30)
+  EHOPTANTEPISCOFINSCUMULATIVO                                                                   String?                          @db.VarChar(1)
+  EHENTIDADEFILANTROPICA                                                                         String?                          @db.VarChar(1)
+  RAMOATIVIDADE                                                                                  Int?
+  SETORATIVIDADE                                                                                 Int?
+  CARTEIRAIDENTIDADE                                                                             String?                          @db.VarChar(30)
+  ORGAOEMISSOR                                                                                   String?                          @db.VarChar(10)
+  ESTADOEMISSOR                                                                                  Int?
+  DATANASCIMENTO                                                                                 DateTime?                        @db.DateTime
+  SEXO                                                                                           Int?
+  ESTADOCIVIL                                                                                    Int?
+  DEPENDENTES                                                                                    Int?
+  CARTEIRATRABALHO                                                                               String?                          @db.VarChar(30)
+  DATAADMISSAO                                                                                   DateTime?                        @db.DateTime
+  NOMEPAI                                                                                        String?                          @db.VarChar(80)
+  NOMEMAE                                                                                        String?                          @db.VarChar(80)
+  NOMECONJUGE                                                                                    String?                          @db.VarChar(80)
+  LOCALTRABALHO                                                                                  String?                          @db.VarChar(80)
+  EHORGAOPUBLICO                                                                                 String?                          @db.VarChar(1)
+  EHCOOPERATIVA                                                                                  String?                          @db.VarChar(1)
+  EHOPTANTESIMPLESFEDERAL                                                                        String?                          @db.VarChar(1)
+  EHOPTANTELUCROPRESUMIDO                                                                        String?                          @db.VarChar(1)
+  INSCRICAOESTADUAL                                                                              String?                          @db.VarChar(30)
+  INSCRICAOESTADUALSUBSTITUTO                                                                    String?                          @db.VarChar(30)
+  INSCRICAOMUNICIPAL                                                                             String?                          @db.VarChar(30)
+  SUFRAMA                                                                                        String?                          @db.VarChar(30)
+  OBSERVACAODOCUMENTO                                                                            String?                          @db.Text
+  EHREDESPACHADOR                                                                                String?                          @db.VarChar(1)
+  EHCLIENTEINDIRETO                                                                              String?                          @db.VarChar(1)
+  EHPRESTADORSERVICOINDIRETO                                                                     String?                          @db.VarChar(1)
+  PESSOATRANSPORTADOR                                                                            Int?
+  EHARMADOR                                                                                      String?                          @db.VarChar(1)
+  EHDESPACHANTE                                                                                  String?                          @db.VarChar(1)
+  EHAGENCIAMARITIMA                                                                              String?                          @db.VarChar(1)
+  EHTERMINAL                                                                                     String?                          @db.VarChar(1)
+  INSCRICAOCRC                                                                                   String?                          @db.VarChar(20)
+  INSCRICAOCRA                                                                                   String?                          @db.VarChar(20)
+  GRUPOEMPRESARIAL                                                                               Int?
+  EHTRANSPORTADOR                                                                                String?                          @db.VarChar(1)
+  UFCRC                                                                                          Int?
+  VALIDADECRC                                                                                    DateTime?                        @db.DateTime
+  EHCONSUMIDORFINAL                                                                              String?                          @db.VarChar(1)
+  MOEDA                                                                                          Int?
+  EHALFANDEGA                                                                                    String?                          @db.VarChar(1)
+  CERTIFICADOIDONEIDADE                                                                          String?                          @db.VarChar(85)
+  EHEXPORTADOR                                                                                   String?                          @db.VarChar(1)
+  EHIMPORTADOR                                                                                   String?                          @db.VarChar(1)
+  EHFRONTEIRATERRESTRE                                                                           String?                          @db.VarChar(1)
+  EHAEROPORTO                                                                                    String?                          @db.VarChar(1)
+  DESPACHANTE                                                                                    Int?
+  AGENCIAMARITIMA                                                                                Int?
+  ALFANDEGA                                                                                      Int?
+  PORTO                                                                                          Int?
+  FRONTEIRATERRESTRE                                                                             Int?
+  CARTEIRAIDENTIDADEEMISSAO                                                                      DateTime?                        @db.DateTime
+  EHNECESSARIOAJUSTE                                                                             String?                          @db.VarChar(1)
+  PRIMEIRAHABILITACAO                                                                            DateTime?                        @db.DateTime
+  ESCOLARIDADE                                                                                   Int?
+  NATURALIDADE                                                                                   Int?
+  REGISTROJUNTACOMERCIALESTADO                                                                   String?                          @db.VarChar(80)
+  DATAREGISTRO                                                                                   DateTime?                        @db.DateTime
+  EHCOOPERADO                                                                                    String?                          @db.VarChar(1)
+  EHAJUDANTEMOTORISTA                                                                            String?                          @db.VarChar(1)
+  EHINTERESSADOCOOPERADO                                                                         String?                          @db.VarChar(1)
+  INDICADORIE                                                                                    Int?
+  DATADEMISSAO                                                                                   DateTime?                        @db.DateTime
+  TIPOCOTACAOMOEDA                                                                               Int?
+  EMPRESA                                                                                        Int?
+  PESSOAUNIDADENEGOCIO                                                                           Int?
+  DATASITUACAO                                                                                   DateTime?                        @db.DateTime
+  SITUACAOCREDITO                                                                                Int?
+  LIMITECREDITO                                                                                  Decimal?                         @db.Decimal(17, 2)
+  CREDITOUTILIZADO                                                                               Decimal?                         @db.Decimal(17, 2)
+  PESSOACOOPERADO                                                                                Int?
+  EHMULTIPLOENDERECO                                                                             String?                          @db.VarChar(1)
+  FILIALINTERNARESPONSAVEL                                                                       Int?
+  PESSOAINTERNARESPONSAVEL                                                                       Int?
+  SITUACAOPESSOAJURIDICA                                                                         Int?
+  PESSOACENTROCUSTO                                                                              Int?
+  EHAGREGADO                                                                                     String?                          @db.VarChar(1)
+  EHPARCEIRO                                                                                     String?                          @db.VarChar(1)
+  EHUSUARIOTERCEIRO                                                                              String?                          @db.VarChar(1)
+  TIPOUSUARIOTERCEIRO                                                                            Int?
+  TIPOEMPRESA                                                                                    Int?
+  PORTEEMPRESA                                                                                   Int?
+  REGIMETRIBUTARIOFEDERAL                                                                        Int?
+  EHCONTRIBUINTECPRB                                                                             String?                          @db.VarChar(1)
+  DATACADASTRO                                                                                   DateTime?                        @db.DateTime
+  CORRACA                                                                                        Int?
+  MODALIDADEJORNADA                                                                              Int?
+  FILIALFATURAMENTO                                                                              Int?
+  EHPESSOACOMERCIOINDUSTRIAL                                                                     String?                          @db.VarChar(1)
+  EHEQUIPARADOTAC                                                                                String?                          @db.VarChar(1)
+  CODIGOPARTICIPANTE                                                                             Int?
+  MS_PESSOACLIENTE_MS_PESSOA_PESSOACLIENTEToMS_PESSOACLIENTE                                     MS_PESSOACLIENTE?                @relation("MS_PESSOA_PESSOACLIENTEToMS_PESSOACLIENTE", fields: [PESSOACLIENTE], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_12309_1823")
+  MS_PESSOAMOTORISTA_MS_PESSOA_PESSOAMOTORISTAToMS_PESSOAMOTORISTA                               MS_PESSOAMOTORISTA?              @relation("MS_PESSOA_PESSOAMOTORISTAToMS_PESSOAMOTORISTA", fields: [PESSOAMOTORISTA], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_12315_1824")
+  MS_TIPOPESSOA                                                                                  MS_TIPOPESSOA?                   @relation(fields: [TIPO], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_1314_1340")
+  MS_STATUSPESSOA                                                                                MS_STATUSPESSOA?                 @relation(fields: [STATUS], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_1317_1342")
+  MS_PESSOATRANSPORTADOR_MS_PESSOA_PESSOATRANSPORTADORToMS_PESSOATRANSPORTADOR                   MS_PESSOATRANSPORTADOR?          @relation("MS_PESSOA_PESSOATRANSPORTADORToMS_PESSOATRANSPORTADOR", fields: [PESSOATRANSPORTADOR], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_14205_1999")
+  MS_SEXOPESSOA                                                                                  MS_SEXOPESSOA?                   @relation(fields: [SEXO], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_14936_2063")
+  MS_PESSOAENDERECO_MS_PESSOA_ENDERECOFISCALToMS_PESSOAENDERECO                                  MS_PESSOAENDERECO?               @relation("MS_PESSOA_ENDERECOFISCALToMS_PESSOAENDERECO", fields: [ENDERECOFISCAL], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_17459_1348")
+  MS_PESSOA_MS_PESSOA_GRUPOEMPRESARIALToMS_PESSOA                                                MS_PESSOA?                       @relation("MS_PESSOA_GRUPOEMPRESARIALToMS_PESSOA", fields: [GRUPOEMPRESARIAL], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_21912_1346")
+  other_MS_PESSOA_MS_PESSOA_GRUPOEMPRESARIALToMS_PESSOA                                          MS_PESSOA[]                      @relation("MS_PESSOA_GRUPOEMPRESARIALToMS_PESSOA")
+  MS_PESSOA_MS_PESSOA_DESPACHANTEToMS_PESSOA                                                     MS_PESSOA?                       @relation("MS_PESSOA_DESPACHANTEToMS_PESSOA", fields: [DESPACHANTE], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_53347_1346")
+  other_MS_PESSOA_MS_PESSOA_DESPACHANTEToMS_PESSOA                                               MS_PESSOA[]                      @relation("MS_PESSOA_DESPACHANTEToMS_PESSOA")
+  MS_PESSOA_MS_PESSOA_AGENCIAMARITIMAToMS_PESSOA                                                 MS_PESSOA?                       @relation("MS_PESSOA_AGENCIAMARITIMAToMS_PESSOA", fields: [AGENCIAMARITIMA], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_53348_1346")
+  other_MS_PESSOA_MS_PESSOA_AGENCIAMARITIMAToMS_PESSOA                                           MS_PESSOA[]                      @relation("MS_PESSOA_AGENCIAMARITIMAToMS_PESSOA")
+  MS_PESSOA_MS_PESSOA_ALFANDEGAToMS_PESSOA                                                       MS_PESSOA?                       @relation("MS_PESSOA_ALFANDEGAToMS_PESSOA", fields: [ALFANDEGA], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_53349_1346")
+  other_MS_PESSOA_MS_PESSOA_ALFANDEGAToMS_PESSOA                                                 MS_PESSOA[]                      @relation("MS_PESSOA_ALFANDEGAToMS_PESSOA")
+  MS_PESSOA_MS_PESSOA_PORTOToMS_PESSOA                                                           MS_PESSOA?                       @relation("MS_PESSOA_PORTOToMS_PESSOA", fields: [PORTO], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_53350_1346")
+  other_MS_PESSOA_MS_PESSOA_PORTOToMS_PESSOA                                                     MS_PESSOA[]                      @relation("MS_PESSOA_PORTOToMS_PESSOA")
+  MS_PESSOA_MS_PESSOA_FRONTEIRATERRESTREToMS_PESSOA                                              MS_PESSOA?                       @relation("MS_PESSOA_FRONTEIRATERRESTREToMS_PESSOA", fields: [FRONTEIRATERRESTRE], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_53437_1346")
+  other_MS_PESSOA_MS_PESSOA_FRONTEIRATERRESTREToMS_PESSOA                                        MS_PESSOA[]                      @relation("MS_PESSOA_FRONTEIRATERRESTREToMS_PESSOA")
+  MS_SITUACAOPESSOAJURIDICA                                                                      MS_SITUACAOPESSOAJURIDICA?       @relation(fields: [SITUACAOPESSOAJURIDICA], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_81003_6965")
+  MS_PESSOA_MS_PESSOA_PESSOACENTROCUSTOToMS_PESSOA                                               MS_PESSOA?                       @relation("MS_PESSOA_PESSOACENTROCUSTOToMS_PESSOA", fields: [PESSOACENTROCUSTO], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_81308_1346")
+  other_MS_PESSOA_MS_PESSOA_PESSOACENTROCUSTOToMS_PESSOA                                         MS_PESSOA[]                      @relation("MS_PESSOA_PESSOACENTROCUSTOToMS_PESSOA")
+  MS_PESSOA_MS_PESSOA_PESSOAINTERNARESPONSAVELToMS_PESSOA                                        MS_PESSOA?                       @relation("MS_PESSOA_PESSOAINTERNARESPONSAVELToMS_PESSOA", fields: [PESSOAINTERNARESPONSAVEL], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_84242_1346")
+  other_MS_PESSOA_MS_PESSOA_PESSOAINTERNARESPONSAVELToMS_PESSOA                                  MS_PESSOA[]                      @relation("MS_PESSOA_PESSOAINTERNARESPONSAVELToMS_PESSOA")
+  MS_PESSOACLIENTE_MS_PESSOACLIENTE_AGENTEVENDASToMS_PESSOA                                      MS_PESSOACLIENTE[]               @relation("MS_PESSOACLIENTE_AGENTEVENDASToMS_PESSOA")
+  MS_PESSOACLIENTE_MS_PESSOACLIENTE_PESSOAToMS_PESSOA                                            MS_PESSOACLIENTE[]               @relation("MS_PESSOACLIENTE_PESSOAToMS_PESSOA")
+  MS_PESSOACLIENTE_MS_PESSOACLIENTE_PESSOAFATURAMENTOToMS_PESSOA                                 MS_PESSOACLIENTE[]               @relation("MS_PESSOACLIENTE_PESSOAFATURAMENTOToMS_PESSOA")
+  MS_PESSOACLIENTE_MS_PESSOACLIENTE_PESSOAARMAZENAGEMToMS_PESSOA                                 MS_PESSOACLIENTE[]               @relation("MS_PESSOACLIENTE_PESSOAARMAZENAGEMToMS_PESSOA")
+  MS_PESSOACLIENTE_MS_PESSOACLIENTE_AGENTEVENDAToMS_PESSOA                                       MS_PESSOACLIENTE[]               @relation("MS_PESSOACLIENTE_AGENTEVENDAToMS_PESSOA")
+  MS_PESSOACONTATO                                                                               MS_PESSOACONTATO[]
+  MS_PESSOAENDERECO_MS_PESSOAENDERECO_PESSOAToMS_PESSOA                                          MS_PESSOAENDERECO[]              @relation("MS_PESSOAENDERECO_PESSOAToMS_PESSOA")
+  MS_PESSOALOG                                                                                   MS_PESSOALOG[]
+  MS_PESSOAMOTORISTA_MS_PESSOAMOTORISTA_PESSOAToMS_PESSOA                                        MS_PESSOAMOTORISTA[]             @relation("MS_PESSOAMOTORISTA_PESSOAToMS_PESSOA")
+  MS_PESSOATRANSPORTADOR_MS_PESSOATRANSPORTADOR_PESSOAToMS_PESSOA                                MS_PESSOATRANSPORTADOR[]         @relation("MS_PESSOATRANSPORTADOR_PESSOAToMS_PESSOA")
+  OP_VIAGEM_OP_VIAGEM_PESSOALOCALORIGEMToMS_PESSOA                                               OP_VIAGEM[]                      @relation("OP_VIAGEM_PESSOALOCALORIGEMToMS_PESSOA")
+  OP_VIAGEM_OP_VIAGEM_PESSOALOCALDESTINOToMS_PESSOA                                              OP_VIAGEM[]                      @relation("OP_VIAGEM_PESSOALOCALDESTINOToMS_PESSOA")
+  OP_VIAGEM_OP_VIAGEM_REDESPACHADORToMS_PESSOA                                                   OP_VIAGEM[]                      @relation("OP_VIAGEM_REDESPACHADORToMS_PESSOA")
+  OP_VIAGEM_OP_VIAGEM_MOTORISTAToMS_PESSOA                                                       OP_VIAGEM[]                      @relation("OP_VIAGEM_MOTORISTAToMS_PESSOA")
+  OP_VIAGEM_OP_VIAGEM_BENEFICIARIOToMS_PESSOA                                                    OP_VIAGEM[]                      @relation("OP_VIAGEM_BENEFICIARIOToMS_PESSOA")
+  OP_VIAGEM_OP_VIAGEM_CLIENTEToMS_PESSOA                                                         OP_VIAGEM[]                      @relation("OP_VIAGEM_CLIENTEToMS_PESSOA")
+  OP_VIAGEM_OP_VIAGEM_TERMINALCOLETAVAZIOToMS_PESSOA                                             OP_VIAGEM[]                      @relation("OP_VIAGEM_TERMINALCOLETAVAZIOToMS_PESSOA")
+  OP_VIAGEM_OP_VIAGEM_TERMINALENTREGAVAZIOToMS_PESSOA                                            OP_VIAGEM[]                      @relation("OP_VIAGEM_TERMINALENTREGAVAZIOToMS_PESSOA")
+  OP_VIAGEM_OP_VIAGEM_PESSOAVINCULADAToMS_PESSOA                                                 OP_VIAGEM[]                      @relation("OP_VIAGEM_PESSOAVINCULADAToMS_PESSOA")
+  OP_VIAGEM_OP_VIAGEM_PESSOACENTROCUSTOToMS_PESSOA                                               OP_VIAGEM[]                      @relation("OP_VIAGEM_PESSOACENTROCUSTOToMS_PESSOA")
+  OP_VIAGEM_OP_VIAGEM_TRANSPORTADORAORDEMFRETEToMS_PESSOA                                        OP_VIAGEM[]                      @relation("OP_VIAGEM_TRANSPORTADORAORDEMFRETEToMS_PESSOA")
+
+  @@index([FILIALFATURAMENTO], map: "IDX101257")
+  @@index([MODALIDADEJORNADA], map: "IDX103139")
+  @@index([CORRACA], map: "IDX103836")
+  @@index([PESSOACLIENTE], map: "IDX12309")
+  @@index([PESSOAFORNECEDOR], map: "IDX12310")
+  @@index([PESSOAMOTORISTA], map: "IDX12315")
+  @@index([TIPO], map: "IDX1314")
+  @@index([CNPJCPF], map: "IDX1315")
+  @@index([STATUS], map: "IDX1317")
+  @@index([CLASSIFICACAOFISCAL], map: "IDX1330")
+  @@index([PESSOATRANSPORTADOR], map: "IDX14205")
+  @@index([ESTADOEMISSOR], map: "IDX14928")
+  @@index([SEXO], map: "IDX14936")
+  @@index([ESTADOCIVIL], map: "IDX14942")
+  @@index([RAMOATIVIDADE], map: "IDX15788")
+  @@index([SETORATIVIDADE], map: "IDX15789")
+  @@index([CNPJCPFSEMMASCARA], map: "IDX17202")
+  @@index([ENDERECOFISCAL], map: "IDX17459")
+  @@index([APROVACAOCADASTRO], map: "IDX1916")
+  @@index([GRUPOEMPRESARIAL], map: "IDX21912")
+  @@index([PESSOAFILIAL], map: "IDX28928")
+  @@index([CENTROCUSTO], map: "IDX28929")
+  @@index([PROJETO], map: "IDX28930")
+  @@index([CNAE], map: "IDX31838")
+  @@index([CATEGORIARNTRC], map: "IDX33920")
+  @@index([INATIVACAOPESSOA], map: "IDX36101")
+  @@index([CATEGORIAATIVIDADE], map: "IDX46210")
+  @@index([PESSOAFUNCIONARIO], map: "IDX46233")
+  @@index([NATUREZAJURIDICA], map: "IDX46696")
+  @@index([UFCRC], map: "IDX51993")
+  @@index([DESPACHANTE], map: "IDX53347")
+  @@index([AGENCIAMARITIMA], map: "IDX53348")
+  @@index([ALFANDEGA], map: "IDX53349")
+  @@index([PORTO], map: "IDX53350")
+  @@index([FRONTEIRATERRESTRE], map: "IDX53437")
+  @@index([MOEDA], map: "IDX53752")
+  @@index([ESCOLARIDADE], map: "IDX62572")
+  @@index([NATURALIDADE], map: "IDX62630")
+  @@index([TIPOCOTACAOMOEDA], map: "IDX69377")
+  @@index([INDICADORIE], map: "IDX72589")
+  @@index([SITUACAOCREDITO], map: "IDX75017")
+  @@index([PESSOACOOPERADO], map: "IDX77342")
+  @@index([PESSOAUNIDADENEGOCIO], map: "IDX78500")
+  @@index([EMPRESA], map: "IDX79089")
+  @@index([SITUACAOPESSOAJURIDICA], map: "IDX81003")
+  @@index([PESSOACENTROCUSTO], map: "IDX81308")
+  @@index([FILIALINTERNARESPONSAVEL], map: "IDX84241")
+  @@index([PESSOAINTERNARESPONSAVEL], map: "IDX84242")
+  @@index([TIPOUSUARIOTERCEIRO], map: "IDX91466")
+  @@index([TIPOEMPRESA], map: "IDX91521")
+  @@index([PORTEEMPRESA], map: "IDX91531")
+  @@index([REGIMETRIBUTARIOFEDERAL], map: "IDX91532")
+}
+
+model MS_PESSOACLIENTE {
+  HANDLE                                                                                Int                          @id(map: "PK__MS_PESSO__D1CC59CEBE60D49E")
+  CONDICAOPAGAMENTOFATURADO                                                             Int?
+  BANCO                                                                                 Int?
+  PERCENTUALCOMISSAO                                                                    Decimal?                     @db.Decimal(7, 2)
+  LOGDATACADASTRO                                                                       DateTime?                    @db.DateTime
+  LOGDATAALTERACAO                                                                      DateTime?                    @db.DateTime
+  LOGUSUARIOCADASTRO                                                                    Int?
+  LOGUSUARIOALTERACAO                                                                   Int?
+  AGENTEVENDAS                                                                          Int?
+  CATEGORIAFATURAMENTO                                                                  Int?
+  CONDICAOPAGAMENTO                                                                     Int?
+  DOCUMENTOPORFATURA                                                                    Int?
+  FORMAENVIOFATURA                                                                      Int?
+  FORMAPAGAMENTO                                                                        Int?
+  PERIODOFATURAMENTO                                                                    Int?
+  VALORMAXIMOFATURA                                                                     Decimal?                     @db.Decimal(17, 2)
+  PESSOA                                                                                Int?
+  RELATORIO                                                                             Int?
+  EHUTILIZARTABELAPRECOFAT                                                              String?                      @db.VarChar(1)
+  EHPERMITEAPENASUMAFATURA                                                              String?                      @db.VarChar(1)
+  ALCADALIMITESEGURO                                                                    Int?
+  OCORRENCIATRANSPORTEAUTOMATICA                                                        Int?
+  PESSOAARMAZENAGEM                                                                     Int?
+  CONTATESOURARIA                                                                       Int?
+  EHNAOAGRUPARDOCUMENTO                                                                 String?                      @db.VarChar(1)
+  C_HANDLE                                                                              Int?
+  PESSOAFATURAMENTO                                                                     Int?
+  AREAATENDIMENTO                                                                       Int?
+  DATASITUACAO                                                                          DateTime?                    @db.DateTime
+  SITUACAOCREDITO                                                                       Int?
+  PERCENTUALMULTA                                                                       Decimal?                     @db.Decimal(7, 2)
+  DIASCARENCIAMULTA                                                                     Int?
+  PERCENTUALMORA                                                                        Decimal?                     @db.Decimal(7, 2)
+  DIASCARENCIAMORA                                                                      Int?
+  TIPOPALETEPADRAO                                                                      Int?
+  TIPOLOTEFATURA                                                                        Int?
+  CONTABANCARIA                                                                         Int?
+  LIMITECREDITO                                                                         Decimal?                     @db.Decimal(17, 2)
+  CREDITOUTILIZADO                                                                      Decimal?                     @db.Decimal(17, 2)
+  AGENTEVENDA                                                                           Int?
+  DURACAOCARGA                                                                          Decimal?                     @db.Decimal(6, 2)
+  DURACAODESCARGA                                                                       Decimal?                     @db.Decimal(6, 2)
+  FILIALARMAZENAGEM                                                                     Int?
+  STATUS                                                                                Int?
+  STATUSDATA                                                                            DateTime?                    @db.DateTime
+  ULTIMATRANSFERENCIAAGENTE                                                             Int?
+  MS_PESSOA_MS_PESSOA_PESSOACLIENTEToMS_PESSOACLIENTE                                   MS_PESSOA[]                  @relation("MS_PESSOA_PESSOACLIENTEToMS_PESSOACLIENTE")
+  MS_PESSOA_MS_PESSOACLIENTE_AGENTEVENDASToMS_PESSOA                                    MS_PESSOA?                   @relation("MS_PESSOACLIENTE_AGENTEVENDASToMS_PESSOA", fields: [AGENTEVENDAS], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_12276_1346")
+  MS_PESSOA_MS_PESSOACLIENTE_PESSOAToMS_PESSOA                                          MS_PESSOA?                   @relation("MS_PESSOACLIENTE_PESSOAToMS_PESSOA", fields: [PESSOA], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_12288_1346")
+  MS_PESSOA_MS_PESSOACLIENTE_PESSOAFATURAMENTOToMS_PESSOA                               MS_PESSOA?                   @relation("MS_PESSOACLIENTE_PESSOAFATURAMENTOToMS_PESSOA", fields: [PESSOAFATURAMENTO], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_16916_1346")
+  MS_PESSOA_MS_PESSOACLIENTE_PESSOAARMAZENAGEMToMS_PESSOA                               MS_PESSOA?                   @relation("MS_PESSOACLIENTE_PESSOAARMAZENAGEMToMS_PESSOA", fields: [PESSOAARMAZENAGEM], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_31850_1346")
+  MS_STATUSPESSOA                                                                       MS_STATUSPESSOA?             @relation(fields: [STATUS], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_77347_1342")
+  MS_PESSOA_MS_PESSOACLIENTE_AGENTEVENDAToMS_PESSOA                                     MS_PESSOA?                   @relation("MS_PESSOACLIENTE_AGENTEVENDAToMS_PESSOA", fields: [AGENTEVENDA], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_78499_1346")
+
+  @@index([AGENTEVENDAS], map: "IDX12276")
+  @@index([CATEGORIAFATURAMENTO], map: "IDX12278")
+  @@index([CONDICAOPAGAMENTO], map: "IDX12280")
+  @@index([FORMAENVIOFATURA], map: "IDX12282")
+  @@index([FORMAPAGAMENTO], map: "IDX12283")
+  @@index([PERIODOFATURAMENTO], map: "IDX12285")
+  @@index([PESSOA], map: "IDX12288")
+  @@index([AREAATENDIMENTO], map: "IDX14083")
+  @@index([CONTATESOURARIA], map: "IDX15314")
+  @@index([PESSOAFATURAMENTO], map: "IDX16916")
+  @@index([BANCO], map: "IDX17495")
+  @@index([SITUACAOCREDITO], map: "IDX21512")
+  @@index([RELATORIO], map: "IDX27407")
+  @@index([OCORRENCIATRANSPORTEAUTOMATICA], map: "IDX29722")
+  @@index([ALCADALIMITESEGURO], map: "IDX31593")
+  @@index([PESSOAARMAZENAGEM], map: "IDX31850")
+  @@index([CONDICAOPAGAMENTOFATURADO], map: "IDX37022")
+  @@index([TIPOPALETEPADRAO], map: "IDX70229")
+  @@index([TIPOLOTEFATURA], map: "IDX70531")
+  @@index([CONTABANCARIA], map: "IDX71538")
+  @@index([STATUS], map: "IDX77347")
+  @@index([AGENTEVENDA], map: "IDX78499")
+  @@index([FILIALARMAZENAGEM], map: "IDX79702")
+  @@index([ULTIMATRANSFERENCIAAGENTE], map: "IDX87194")
+}
+
+model MS_PESSOACONTATO {
+  HANDLE                   Int                        @id(map: "PK__MS_PESSO__D1CC59CEB2C8F47D")
+  CELULAR                  String?                    @db.VarChar(30)
+  GRUPOENVIOAUTOMATICO     Int?
+  STATUSERRADO             Int?
+  STATUSDATAOLD            DateTime?                  @db.DateTime
+  OPERADORA                Int?
+  STATUSOLD                Int?
+  NOME                     String?                    @db.VarChar(100)
+  FUNCAO                   String?                    @db.VarChar(100)
+  TELEFONE                 String?                    @db.VarChar(30)
+  RAMAL                    String?                    @db.VarChar(20)
+  EMAIL                    String?                    @db.VarChar(100)
+  OBSERVACAO               String?                    @db.Text
+  PESSOA                   Int?
+  LOGDATACADASTRO          DateTime?                  @db.DateTime
+  LOGDATAALTERACAO         DateTime?                  @db.DateTime
+  LOGUSUARIOCADASTRO       Int?
+  LOGUSUARIOALTERACAO      Int?
+  C_HANDLE                 Int?
+  CONTATO                  Int?
+  MUNICIPIO                Int?
+  EHPRINCIPAL              String?                    @db.VarChar(1)
+  STATUS                   Int?
+  STATUSDATA               DateTime?                  @db.DateTime
+  EHFUNCAOAUTOMATICA       String?                    @db.VarChar(1)
+  MS_PESSOA                MS_PESSOA?                 @relation(fields: [PESSOA], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_1345_1346")
+  MS_STATUSPESSOACONTATO   MS_STATUSPESSOACONTATO?    @relation(fields: [STATUSOLD], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_33596_3376")
+  MS_PESSOAENDERECO        MS_PESSOAENDERECO?         @relation(fields: [MUNICIPIO], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_42495_1348")
+
+  @@index([PESSOA], map: "IDX1345")
+  @@index([GRUPOENVIOAUTOMATICO], map: "IDX32303")
+  @@index([STATUSERRADO], map: "IDX32311")
+  @@index([STATUSOLD], map: "IDX33596")
+  @@index([OPERADORA], map: "IDX35786")
+  @@index([CONTATO], map: "IDX40713")
+  @@index([MUNICIPIO], map: "IDX42495")
+  @@index([STATUS], map: "IDX70764")
+}
+
+model MS_PESSOAENDERECO {
+  HANDLE                                                                                        Int                            @id(map: "PK__MS_PESSO__D1CC59CE40D9B874")
+  PESSOA                                                                                        Int?
+  CEP                                                                                           Int?
+  TIPOLOGRADOURO                                                                                Int?
+  LOGRADOURO                                                                                    String?                        @db.VarChar(120)
+  COMPLEMENTO                                                                                   String?                        @db.VarChar(200)
+  PAIS                                                                                          Int?
+  ESTADO                                                                                        Int?
+  MUNICIPIO                                                                                     Int?
+  LOGDATACADASTRO                                                                               DateTime?                      @db.DateTime
+  LOGDATAALTERACAO                                                                              DateTime?                      @db.DateTime
+  LOGUSUARIOCADASTRO                                                                            Int?
+  LOGUSUARIOALTERACAO                                                                           Int?
+  C_LNGENDEREC                                                                                  Int?
+  BAIRRO                                                                                        Int?
+  NUMERO                                                                                        String?                        @db.VarChar(15)
+  TIPO                                                                                          Int?
+  DATAALTERACAO                                                                                 DateTime?                      @db.DateTime
+  STATUS                                                                                        Int?
+  STATUSDATA                                                                                    DateTime?                      @db.DateTime
+  MOTIVO                                                                                        Int?
+  EHSEMNUMERO                                                                                   String?                        @db.VarChar(1)
+  IMPORTADO                                                                                     String?                        @db.VarChar(500)
+  LATITUDE                                                                                      Decimal?                       @db.Decimal(18, 8)
+  LONGITUDE                                                                                     Decimal?                       @db.Decimal(18, 8)
+  NOME                                                                                          String?                        @db.VarChar(400)
+  PESSOADOCUMENTACAO                                                                            Int?
+  PESSOADOCUMENTACAOITEM                                                                        Int?
+  OBSERVACAO                                                                                    String?                        @db.VarChar(4000)
+  EHNOMEMANUAL                                                                                  String?                        @db.VarChar(1)
+  MUNICIPIOIMPORTACAO                                                                           String?                        @db.VarChar(100)
+  ESTADOIMPORTACAO                                                                              String?                        @db.VarChar(100)
+  PAISIMPORTACAO                                                                                String?                        @db.VarChar(100)
+  CEPIMPORTACAO                                                                                 String?                        @db.VarChar(100)
+  TIPOLOGRADOUROIMPORTACAO                                                                      String?                        @db.VarChar(100)
+  BAIRROIMPORTACAO                                                                              String?                        @db.VarChar(100)
+  ENDERECOIMPORTACAO                                                                            String?                        @db.VarChar(200)
+  ENDERECOIMPORTACAO2                                                                           String?                        @db.VarChar(200)
+  CODIGOPAISIMPORTACAO                                                                          String?                        @db.VarChar(20)
+  SIGLAESTADOIMPORTACAO                                                                         String?                        @db.VarChar(10)
+  CODIGOIBGEMUNICIPIOIMPORTACAO                                                                 String?                        @db.VarChar(20)
+  MASCARAENDERECOIMPORTACAO                                                                     String?                        @db.VarChar(150)
+  MASCARAENDERECO2IMPORTACAO                                                                    String?                        @db.VarChar(150)
+  SEPARADORENDERECOIMPORTACAO                                                                   String?                        @db.VarChar(10)
+  EHALTEROUNOME                                                                                 String?                        @db.VarChar(1)
+  RAZAOSOCIAL                                                                                   String?                        @db.VarChar(300)
+  EHALTEROUBAIRRO                                                                               String?                        @db.VarChar(1)
+  EHALTEROUNUMERO                                                                               String?                        @db.VarChar(1)
+  EHALTEROUMUNICIPIO                                                                            String?                        @db.VarChar(1)
+  EHALTEROULOGRADOURO                                                                           String?                        @db.VarChar(1)
+  EHALTEROUCOMPLEMENTO                                                                          String?                        @db.VarChar(1)
+  MS_PESSOA_MS_PESSOA_ENDERECOFISCALToMS_PESSOAENDERECO                                         MS_PESSOA[]                    @relation("MS_PESSOA_ENDERECOFISCALToMS_PESSOAENDERECO")
+  MS_PESSOACONTATO                                                                              MS_PESSOACONTATO[]
+  MS_PESSOA_MS_PESSOAENDERECO_PESSOAToMS_PESSOA                                                 MS_PESSOA?                     @relation("MS_PESSOAENDERECO_PESSOAToMS_PESSOA", fields: [PESSOA], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_1346_1346")
+  MS_TIPOPESSOAENDERECO                                                                         MS_TIPOPESSOAENDERECO?         @relation(fields: [TIPO], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_14156_1992")
+  MS_STATUSPESSOAENDERECO                                                                       MS_STATUSPESSOAENDERECO?       @relation(fields: [STATUS], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_18022_2342")
+  OP_VIAGEM_OP_VIAGEM_ENDERECOLOCALORIGEMToMS_PESSOAENDERECO                                    OP_VIAGEM[]                    @relation("OP_VIAGEM_ENDERECOLOCALORIGEMToMS_PESSOAENDERECO")
+  OP_VIAGEM_OP_VIAGEM_ENDERECOLOCALDESTINOToMS_PESSOAENDERECO                                   OP_VIAGEM[]                    @relation("OP_VIAGEM_ENDERECOLOCALDESTINOToMS_PESSOAENDERECO")
+
+  @@index([PESSOA], map: "IDX1346")
+  @@index([PESSOA, TIPO, DATAALTERACAO, STATUS], map: "IDX1346_14156_17128_18022")
+  @@index([CEP], map: "IDX1349")
+  @@index([TIPOLOGRADOURO], map: "IDX1350")
+  @@index([PAIS], map: "IDX1355")
+  @@index([ESTADO], map: "IDX1356")
+  @@index([MUNICIPIO], map: "IDX1357")
+  @@index([TIPO], map: "IDX14156")
+  @@index([BAIRRO], map: "IDX14895")
+  @@index([STATUS], map: "IDX18022")
+  @@index([MOTIVO], map: "IDX20740")
+  @@index([PESSOADOCUMENTACAO], map: "IDX86123")
+  @@index([PESSOADOCUMENTACAOITEM], map: "IDX86124")
+}
+
+model MS_PESSOALOG {
+  HANDLE                   Int                       @id(map: "PK__MS_PESSO__D1CC59CE6F74A951")
+  LOGDATACADASTRO          DateTime?                 @db.DateTime
+  LOGDATAALTERACAO         DateTime?                 @db.DateTime
+  LOGUSUARIOCADASTRO       Int?
+  LOGUSUARIOALTERACAO      Int?
+  DATA                     DateTime?                 @db.DateTime
+  TIPOMENSAGEM             Int?
+  COMPLEMENTO              String?                   @db.VarChar(50)
+  OBSERVACAO               String?                   @db.Text
+  PESSOA                   Int?
+  USUARIO                  Int?
+  MD_TIPOMENSAGEMAUDITORIA MD_TIPOMENSAGEMAUDITORIA? @relation(fields: [TIPOMENSAGEM], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_11488_1711")
+  MS_PESSOA                MS_PESSOA?                @relation(fields: [PESSOA], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_11491_1346")
+
+  @@index([TIPOMENSAGEM], map: "IDX11488")
+  @@index([PESSOA], map: "IDX11491")
+  @@index([USUARIO], map: "IDX11492")
+}
+
+model MS_PESSOAMOTORISTA {
+  HANDLE                                                  Int                   @id(map: "PK__MS_PESSO__D1CC59CE844EF8BA")
+  LOGDATACADASTRO                                         DateTime?             @db.DateTime
+  LOGDATAALTERACAO                                        DateTime?             @db.DateTime
+  LOGUSUARIOCADASTRO                                      Int?
+  LOGUSUARIOALTERACAO                                     Int?
+  CONDICAOPAGAMENTO                                       Int?
+  PESSOA                                                  Int?
+  JORNADAATUAL                                            Int?
+  MS_PESSOA_MS_PESSOA_PESSOAMOTORISTAToMS_PESSOAMOTORISTA MS_PESSOA[]           @relation("MS_PESSOA_PESSOAMOTORISTAToMS_PESSOAMOTORISTA")
+  MS_PESSOA_MS_PESSOAMOTORISTA_PESSOAToMS_PESSOA          MS_PESSOA?            @relation("MS_PESSOAMOTORISTA_PESSOAToMS_PESSOA", fields: [PESSOA], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_12295_1346")
+
+  @@index([CONDICAOPAGAMENTO], map: "IDX12293")
+  @@index([PESSOA], map: "IDX12295")
+  @@index([JORNADAATUAL], map: "IDX67042")
+}
+
+model MS_PESSOATRANSPORTADOR {
+  HANDLE                                                          Int         @id(map: "PK__MS_PESSO__D1CC59CEC70D339C")
+  LOGDATACADASTRO                                                 DateTime?   @db.DateTime
+  LOGDATAALTERACAO                                                DateTime?   @db.DateTime
+  LOGUSUARIOCADASTRO                                              Int?
+  LOGUSUARIOALTERACAO                                             Int?
+  RNTRC                                                           String?     @db.VarChar(20)
+  PESSOA                                                          Int?
+  MS_PESSOA_MS_PESSOA_PESSOATRANSPORTADORToMS_PESSOATRANSPORTADOR MS_PESSOA[] @relation("MS_PESSOA_PESSOATRANSPORTADORToMS_PESSOATRANSPORTADOR")
+  MS_PESSOA_MS_PESSOATRANSPORTADOR_PESSOAToMS_PESSOA              MS_PESSOA?  @relation("MS_PESSOATRANSPORTADOR_PESSOAToMS_PESSOA", fields: [PESSOA], references: [HANDLE], onDelete: NoAction, onUpdate: NoAction, map: "FK_14204_1346")
+
+  @@index([PESSOA], map: "IDX14204")
+}
+
+model MS_SEXOPESSOA {
+  HANDLE              Int            @id(map: "PK__MS_SEXOP__D1CC59CE084C424D")
+  LOGDATACADASTRO     DateTime?      @db.DateTime
+  LOGDATAALTERACAO    DateTime?      @db.DateTime
+  LOGUSUARIOCADASTRO  Int?
+  LOGUSUARIOALTERACAO Int?
+  NOME                String?        @db.VarChar(50)
+  ORDEM               Int?
+  SIGLA               String?        @db.VarChar(2)
+  CODIGO              Int?
+  MS_PESSOA           MS_PESSOA[]
+}
+
+model MS_SITUACAOPESSOAJURIDICA {
+  HANDLE              Int         @id(map: "PK__MS_SITUA__D1CC59CE5FBD10AD")
+  LOGDATACADASTRO     DateTime?   @db.DateTime
+  LOGDATAALTERACAO    DateTime?   @db.DateTime
+  LOGUSUARIOCADASTRO  Int?
+  LOGUSUARIOALTERACAO Int?
+  NOME                String?     @db.VarChar(50)
+  ORDEM               Int?
+  CODIGO              Int?
+  MS_PESSOA           MS_PESSOA[]
+}
+
+model MS_STATUSPESSOA {
+  HANDLE              Int                   @id(map: "PK__MS_STATU__D1CC59CE5CA952C1")
+  IMAGEM              Int?
+  NOME                String?               @db.VarChar(50)
+  ORDEM               Int?
+  LOGDATACADASTRO     DateTime?             @db.DateTime
+  LOGDATAALTERACAO    DateTime?             @db.DateTime
+  LOGUSUARIOCADASTRO  Int?
+  LOGUSUARIOALTERACAO Int?
+  MS_PESSOA           MS_PESSOA[]
+  MS_PESSOACLIENTE    MS_PESSOACLIENTE[]
+}
+
+model MS_STATUSPESSOACONTATO {
+  HANDLE              Int                @id(map: "PK__MS_STATU__D1CC59CEAAA0514C")
+  LOGDATACADASTRO     DateTime?          @db.DateTime
+  LOGDATAALTERACAO    DateTime?          @db.DateTime
+  LOGUSUARIOCADASTRO  Int?
+  LOGUSUARIOALTERACAO Int?
+  NOME                String?            @db.VarChar(50)
+  ORDEM               Int?
+  IMAGEM              Int?
+  MS_PESSOACONTATO    MS_PESSOACONTATO[]
+
+  @@index([IMAGEM], map: "IDX32310")
+}
+
+model MS_STATUSPESSOAENDERECO {
+  HANDLE              Int                 @id(map: "PK__MS_STATU__D1CC59CE5BB66AD6")
+  LOGDATACADASTRO     DateTime?           @db.DateTime
+  LOGDATAALTERACAO    DateTime?           @db.DateTime
+  LOGUSUARIOCADASTRO  Int?
+  LOGUSUARIOALTERACAO Int?
+  NOME                String?             @db.VarChar(50)
+  ORDEM               Int?
+  IMAGEM              Int?
+  MS_PESSOAENDERECO   MS_PESSOAENDERECO[]
+
+  @@index([IMAGEM], map: "IDX18021")
+}
+
+model MS_TIPOINATIVACAOPESSOA {
+  HANDLE              Int                   @id(map: "PK__MS_TIPOI__D1CC59CE4524DF8C")
+  LOGDATACADASTRO     DateTime?             @db.DateTime
+  LOGDATAALTERACAO    DateTime?             @db.DateTime
+  LOGUSUARIOCADASTRO  Int?
+  LOGUSUARIOALTERACAO Int?
+  ALCADAAPROVACAO     Int?
+  EHATIVAR            String?               @db.VarChar(1)
+  NOME                String?               @db.VarChar(50)
+  SIGLA               String?               @db.VarChar(10)
+  EMPRESA             Int?
+
+  @@index([ALCADAAPROVACAO], map: "IDX36076")
+  @@index([EMPRESA], map: "IDX79234")
+}
+
+model MS_TIPOPESSOA {
+  HANDLE                                                                                   Int                           @id(map: "PK__MS_TIPOP__D1CC59CEECA65ADD")
+  NOME                                                                                     String?                       @db.VarChar(50)
+  ORDEM                                                                                    Int?
+  LOGDATACADASTRO                                                                          DateTime?                     @db.DateTime
+  LOGDATAALTERACAO                                                                         DateTime?                     @db.DateTime
+  LOGUSUARIOCADASTRO                                                                       Int?
+  LOGUSUARIOALTERACAO                                                                      Int?
+  ALCADAAPROVACAO                                                                          Int?
+  STATUSDATA                                                                               DateTime?                     @db.DateTime
+  OBSERVACAO                                                                               String?                       @db.VarChar(4000)
+  STATUS                                                                                   Int?
+  CODIGO                                                                                   Int?
+  TIPOCONTATO                                                                              Int?
+  ARQUIVOMODELO                                                                            Int?
+  GRUPOENVIOEMAILFINANCEIRO                                                                Int?
+  GRUPOENVIOCONTATO                                                                        Int?
+  EHCADASTRARPESSOAGERENCIADORA                                                            String?                       @db.VarChar(1)
+  TIPOGERENCIAMENTORISCO                                                                   Int?
+  GERENCIADORARISCO                                                                        Int?
+  MS_PESSOA                                                                                MS_PESSOA[]
+
+  @@index([TIPOGERENCIAMENTORISCO], map: "IDX104478")
+  @@index([GERENCIADORARISCO], map: "IDX104479")
+  @@index([ALCADAAPROVACAO], map: "IDX17081")
+  @@index([STATUS], map: "IDX72666")
+  @@index([TIPOCONTATO], map: "IDX87868")
+  @@index([GRUPOENVIOEMAILFINANCEIRO], map: "IDX93430")
+  @@index([GRUPOENVIOCONTATO], map: "IDX93431")
+  @@index([ARQUIVOMODELO], map: "IDX96965")
+}
+
+model MS_TIPOPESSOAENDERECO {
+  HANDLE              Int                 @id(map: "PK__MS_TIPOP__D1CC59CE4DF14550")
+  LOGDATACADASTRO     DateTime?           @db.DateTime
+  LOGDATAALTERACAO    DateTime?           @db.DateTime
+  LOGUSUARIOCADASTRO  Int?
+  LOGUSUARIOALTERACAO Int?
+  NOME                String?             @db.VarChar(50)
+  ORDEM               Int?
+  SIGLA               String?             @db.VarChar(10)
+  MS_PESSOAENDERECO   MS_PESSOAENDERECO[]
+}
+
+model MS_TIPOPESSOAOCORRENCIA {
+  HANDLE                  Int                      @id(map: "PK__MS_TIPOP__D1CC59CE02647286")
+  LOGDATACADASTRO         DateTime?                @db.DateTime
+  LOGDATAALTERACAO        DateTime?                @db.DateTime
+  LOGUSUARIOCADASTRO      Int?
+  LOGUSUARIOALTERACAO     Int?
+  STATUS                  Int?
+  STATUSDATA              DateTime?                @db.DateTime
+  EMPRESA                 Int?
+  CODIGO                  Int?
+  ALCADAAPROVACAO         Int?
+  NOME                    String?                  @db.VarChar(350)
+  OBSERVACAO              String?                  @db.VarChar(4000)
+  ACAO                    Int?
+
+  @@index([STATUS], map: "IDX97960")
+  @@index([EMPRESA], map: "IDX97962")
+  @@index([ALCADAAPROVACAO], map: "IDX97964")
+  @@index([ACAO], map: "IDX97968")
+}
+
+model IN_CAMPOCOMPLEMENTAR {
+  HANDLE              Int       @id
+  LOGDATACADASTRO     DateTime? @db.DateTime
+  LOGDATAALTERACAO    DateTime? @db.DateTime
+  LOGUSUARIOCADASTRO  Int?
+  LOGUSUARIOALTERACAO Int?
+  ORIGEM              Int?
+  HANDLEORIGEM        Int?
+  CAMPO               String?   @db.VarChar(300)
+  VALOR               String?   @db.VarChar(4000)
+
+  @@index([HANDLEORIGEM], map: "IDX_CAMPOCOMPLEMENTAR_HANDLEORIGEM")
+  @@index([CAMPO], map: "IDX_CAMPOCOMPLEMENTAR_CAMPO")
+}
+
