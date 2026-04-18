@@ -1,5 +1,5 @@
 import { Service, Inject } from 'fastify-decorators';
-import { PrismaMotoristaRepository } from '../../infra/prisma.motorista.repository.js';
+import { MssqlMotoristaRepository } from '../../infra/mssql.motorista.repository.js';
 import type {
   IMotoristaRepository,
   MotoristaDto,
@@ -7,7 +7,7 @@ import type {
 
 @Service()
 export class ListarMotoristasUseCase {
-  @Inject(PrismaMotoristaRepository)
+  @Inject(MssqlMotoristaRepository)
   private repo!: IMotoristaRepository;
 
   async execute(): Promise<MotoristaDto[]> {
