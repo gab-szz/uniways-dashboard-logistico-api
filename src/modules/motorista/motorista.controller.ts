@@ -7,7 +7,6 @@ export default class MotoristaController {
   @Inject(ListarMotoristasUseCase)
   private listarMotoristasUseCase!: ListarMotoristasUseCase;
 
-  // GET /motoristas
   @GET({ url: '/' })
   async listar(_request: FastifyRequest, reply: FastifyReply) {
     const motoristas = await this.listarMotoristasUseCase.execute();

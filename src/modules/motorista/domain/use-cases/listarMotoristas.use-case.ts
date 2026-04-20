@@ -3,7 +3,7 @@ import { MssqlMotoristaRepository } from '../../infra/mssql.motorista.repository
 import type {
   IMotoristaRepository,
   MotoristaDto,
-} from '../motorista.repository.js';
+} from '../../infra/motorista.repository.js';
 
 @Service()
 export class ListarMotoristasUseCase {

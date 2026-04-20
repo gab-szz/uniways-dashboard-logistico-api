@@ -18,6 +18,18 @@ const config: mssql.config = {
   },
 };
 
-export const db = new mssql.ConnectionPool(config);
+export const pool = new mssql.ConnectionPool(config);
 
-export const dbConnect = db.connect();
+/**
+ * Garante que o pool esteja conectado antes de retornar.
+ * Se já estiver conectando, aguarda. Se não, conecta.
+ */
+export async function conectarBanco() {
+  if (pool.connected) return pool;
+  if (pool.connecting) {
+    return new Promise<mssql.ConnectionPool>((resolve) => {
+      pool.once('connect', () => resolve(pool));
+    });
+  }
+  return await pool.connect();
+}
