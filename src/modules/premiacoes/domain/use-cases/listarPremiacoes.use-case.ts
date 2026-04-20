@@ -11,7 +11,7 @@ export class ListarPremiacoesUseCase {
     if (rep) this.rep = rep;
   }
 
-  async execute(params: { dtini: string; dtfim: string }) {
+  async exec(params: { dtini: string; dtfim: string }) {
     // Garante que as datas cubram o dia inteiro ignorando qualquer hora que venha no JSON
     const dtini = new Date(`${params.dtini}T00:00:00`);
     const dtfim = new Date(`${params.dtfim}T23:59:59`);
