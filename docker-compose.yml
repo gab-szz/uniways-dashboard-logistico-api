@@ -1,0 +1,43 @@
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: uniways-redis
+    command: redis-server /etc/redis/redis.conf
+    volumes:
+      - ./docker/redis.conf:/etc/redis/redis.conf:ro
+      - redis_data:/data
+    ports:
+      - '6379:6379'
+    restart: unless-stopped
+    networks:
+      - uniways-net
+    healthcheck:
+      test: ['CMD', 'redis-cli', '-a', 'B5k8mRq2nXpW4jLv7sYh9cT', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: uniways-app
+    env_file: .env
+    environment:
+      # Sobrescreve o REDIS_URL do .env para usar o hostname interno do Docker
+      - REDIS_URL=redis://:B5k8mRq2nXpW4jLv7sYh9cT@redis:6379
+      - AMBIENTE=prod
+    ports:
+      - '3094:3094'
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - uniways-net
+
+networks:
+  uniways-net:
+    driver: bridge
+
+volumes:
+  redis_data:
+    driver: local

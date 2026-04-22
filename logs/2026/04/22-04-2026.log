@@ -148,3 +148,194 @@
 22/04/2026 15:40:00 - [ERROR] - [main] Falha no aquecimento do cache: Timeout: SQLs ultrapassaram 2 minutos
 22/04/2026 15:40:00 - [INFO] - [main] Registrando scheduler de premiações...
 22/04/2026 15:40:04 - [INFO] - [premiacoes.scheduler] Job agendado a cada 10 minutos
+22/04/2026 15:50:05 - [INFO] - [premiacoes.worker] Iniciando processamento do job repeat:premiacoes-atualizar-cache:1776887396820
+22/04/2026 15:50:05 - [INFO] - [premiacoes.job] Iniciando atualização do cache...
+22/04/2026 15:50:05 - [INFO] - [premiacoes.job] Período: 01/04/2026 → 30/04/2026
+22/04/2026 15:50:05 - [INFO] - [premiacoes.job] Executando 6 SQLs em paralelo...
+22/04/2026 15:50:07 - [INFO] - [premiacoes.job] totaisRomaneios: 214 registros
+22/04/2026 15:50:07 - [INFO] - [premiacoes.job] resumoDevolucoes: 31 registros
+22/04/2026 15:50:07 - [INFO] - [premiacoes.job] resumoNotasFiscais: 214 registros
+22/04/2026 15:50:07 - [INFO] - [premiacoes.job] totaisViagem: 219 registros
+22/04/2026 15:50:08 - [INFO] - [premiacoes.job] resumoNotasPeso: 114 registros
+22/04/2026 15:50:08 - [INFO] - [premiacoes.job] totalEntregas: 114 registros
+22/04/2026 15:50:08 - [INFO] - [premiacoes.job] Todos os SQLs concluídos — 219 motoristas encontrados
+22/04/2026 15:50:08 - [INFO] - [premiacoes.job] Cache atualizado: 219 motoristas
+22/04/2026 15:50:09 - [INFO] - [premiacoes.worker] Job repeat:premiacoes-atualizar-cache:1776887396820 concluído com sucesso
+22/04/2026 15:59:57 - [INFO] - [premiacoes.worker] Iniciando processamento do job repeat:premiacoes-atualizar-cache:1776887996820
+22/04/2026 15:59:57 - [INFO] - [premiacoes.job] Iniciando atualização do cache...
+22/04/2026 15:59:57 - [INFO] - [premiacoes.job] Período: 01/04/2026 → 30/04/2026
+22/04/2026 15:59:57 - [INFO] - [premiacoes.job] Executando 6 SQLs em paralelo...
+22/04/2026 15:59:59 - [INFO] - [premiacoes.job] totaisRomaneios: 214 registros
+22/04/2026 16:00:00 - [INFO] - [premiacoes.job] totaisViagem: 219 registros
+22/04/2026 16:00:00 - [INFO] - [premiacoes.job] resumoDevolucoes: 31 registros
+22/04/2026 16:00:00 - [INFO] - [premiacoes.job] resumoNotasFiscais: 214 registros
+22/04/2026 16:00:00 - [INFO] - [premiacoes.job] resumoNotasPeso: 114 registros
+22/04/2026 16:00:01 - [INFO] - [premiacoes.job] totalEntregas: 114 registros
+22/04/2026 16:00:01 - [INFO] - [premiacoes.job] Todos os SQLs concluídos — 219 motoristas encontrados
+22/04/2026 16:00:01 - [INFO] - [premiacoes.job] Cache atualizado: 219 motoristas
+22/04/2026 16:00:02 - [INFO] - [premiacoes.worker] Job repeat:premiacoes-atualizar-cache:1776887996820 concluído com sucesso
+22/04/2026 16:09:57 - [INFO] - [premiacoes.worker] Iniciando processamento do job repeat:premiacoes-atualizar-cache:1776888596820
+22/04/2026 16:09:57 - [INFO] - [premiacoes.job] Iniciando atualização do cache...
+22/04/2026 16:09:57 - [INFO] - [premiacoes.job] Período: 01/04/2026 → 30/04/2026
+22/04/2026 16:09:57 - [INFO] - [premiacoes.job] Executando 6 SQLs em paralelo...
+22/04/2026 16:09:58 - [INFO] - [premiacoes.job] totaisRomaneios: 214 registros
+22/04/2026 16:09:59 - [INFO] - [premiacoes.job] resumoDevolucoes: 31 registros
+22/04/2026 16:09:59 - [INFO] - [premiacoes.job] resumoNotasFiscais: 214 registros
+22/04/2026 16:10:00 - [INFO] - [premiacoes.job] totalEntregas: 114 registros
+22/04/2026 16:10:00 - [INFO] - [premiacoes.job] totaisViagem: 219 registros
+22/04/2026 16:10:00 - [INFO] - [premiacoes.job] resumoNotasPeso: 114 registros
+22/04/2026 16:10:00 - [INFO] - [premiacoes.job] Todos os SQLs concluídos — 219 motoristas encontrados
+22/04/2026 16:10:00 - [INFO] - [premiacoes.job] Cache atualizado: 219 motoristas
+22/04/2026 16:10:00 - [INFO] - [premiacoes.worker] Job repeat:premiacoes-atualizar-cache:1776888596820 concluído com sucesso
+22/04/2026 16:19:57 - [INFO] - [premiacoes.worker] Iniciando processamento do job repeat:premiacoes-atualizar-cache:1776889196820
+22/04/2026 16:19:57 - [INFO] - [premiacoes.job] Iniciando atualização do cache...
+22/04/2026 16:19:57 - [INFO] - [premiacoes.job] Período: 01/04/2026 → 30/04/2026
+22/04/2026 16:19:57 - [INFO] - [premiacoes.job] Executando 6 SQLs em paralelo...
+22/04/2026 16:19:58 - [INFO] - [premiacoes.job] totaisRomaneios: 214 registros
+22/04/2026 16:19:58 - [INFO] - [premiacoes.job] resumoDevolucoes: 31 registros
+22/04/2026 16:19:58 - [INFO] - [premiacoes.job] resumoNotasFiscais: 214 registros
+22/04/2026 16:19:59 - [INFO] - [premiacoes.job] totalEntregas: 114 registros
+22/04/2026 16:19:59 - [INFO] - [premiacoes.job] resumoNotasPeso: 114 registros
+22/04/2026 16:20:00 - [INFO] - [premiacoes.job] totaisViagem: 219 registros
+22/04/2026 16:20:00 - [INFO] - [premiacoes.job] Todos os SQLs concluídos — 219 motoristas encontrados
+22/04/2026 16:20:01 - [INFO] - [premiacoes.job] Cache atualizado: 219 motoristas
+22/04/2026 16:20:01 - [INFO] - [premiacoes.worker] Job repeat:premiacoes-atualizar-cache:1776889196820 concluído com sucesso
+22/04/2026 16:29:57 - [INFO] - [premiacoes.worker] Iniciando processamento do job repeat:premiacoes-atualizar-cache:1776889796820
+22/04/2026 16:29:57 - [INFO] - [premiacoes.job] Iniciando atualização do cache...
+22/04/2026 16:29:57 - [INFO] - [premiacoes.job] Período: 01/04/2026 → 30/04/2026
+22/04/2026 16:29:57 - [INFO] - [premiacoes.job] Executando 6 SQLs em paralelo...
+22/04/2026 16:29:58 - [INFO] - [premiacoes.job] totaisRomaneios: 214 registros
+22/04/2026 16:29:58 - [INFO] - [premiacoes.job] resumoDevolucoes: 31 registros
+22/04/2026 16:29:58 - [INFO] - [premiacoes.job] resumoNotasFiscais: 214 registros
+22/04/2026 16:29:58 - [INFO] - [premiacoes.job] totalEntregas: 114 registros
+22/04/2026 16:29:59 - [INFO] - [premiacoes.job] totaisViagem: 219 registros
+22/04/2026 16:29:59 - [INFO] - [premiacoes.job] resumoNotasPeso: 114 registros
+22/04/2026 16:29:59 - [INFO] - [premiacoes.job] Todos os SQLs concluídos — 219 motoristas encontrados
+22/04/2026 16:29:59 - [INFO] - [premiacoes.job] Cache atualizado: 219 motoristas
+22/04/2026 16:29:59 - [INFO] - [premiacoes.worker] Job repeat:premiacoes-atualizar-cache:1776889796820 concluído com sucesso
+22/04/2026 16:39:57 - [INFO] - [premiacoes.worker] Iniciando processamento do job repeat:premiacoes-atualizar-cache:1776890396820
+22/04/2026 16:39:57 - [INFO] - [premiacoes.job] Iniciando atualização do cache...
+22/04/2026 16:39:57 - [INFO] - [premiacoes.job] Período: 01/04/2026 → 30/04/2026
+22/04/2026 16:39:57 - [INFO] - [premiacoes.job] Executando 6 SQLs em paralelo...
+22/04/2026 16:39:58 - [INFO] - [premiacoes.job] totaisRomaneios: 214 registros
+22/04/2026 16:39:58 - [INFO] - [premiacoes.job] resumoDevolucoes: 31 registros
+22/04/2026 16:39:58 - [INFO] - [premiacoes.job] resumoNotasFiscais: 214 registros
+22/04/2026 16:40:00 - [INFO] - [premiacoes.job] resumoNotasPeso: 114 registros
+22/04/2026 16:40:00 - [INFO] - [premiacoes.job] totalEntregas: 114 registros
+22/04/2026 16:40:00 - [INFO] - [premiacoes.job] totaisViagem: 219 registros
+22/04/2026 16:40:00 - [INFO] - [premiacoes.job] Todos os SQLs concluídos — 219 motoristas encontrados
+22/04/2026 16:40:01 - [INFO] - [premiacoes.job] Cache atualizado: 219 motoristas
+22/04/2026 16:40:01 - [INFO] - [premiacoes.worker] Job repeat:premiacoes-atualizar-cache:1776890396820 concluído com sucesso
+22/04/2026 16:49:56 - [INFO] - [premiacoes.worker] Iniciando processamento do job repeat:premiacoes-atualizar-cache:1776890996820
+22/04/2026 16:49:56 - [INFO] - [premiacoes.job] Iniciando atualização do cache...
+22/04/2026 16:49:56 - [INFO] - [premiacoes.job] Período: 01/04/2026 → 30/04/2026
+22/04/2026 16:49:56 - [INFO] - [premiacoes.job] Executando 6 SQLs em paralelo...
+22/04/2026 16:49:58 - [INFO] - [premiacoes.job] totaisRomaneios: 214 registros
+22/04/2026 16:49:58 - [INFO] - [premiacoes.job] resumoDevolucoes: 31 registros
+22/04/2026 16:49:58 - [INFO] - [premiacoes.job] resumoNotasFiscais: 214 registros
+22/04/2026 16:49:59 - [INFO] - [premiacoes.job] resumoNotasPeso: 114 registros
+22/04/2026 16:49:59 - [INFO] - [premiacoes.job] totaisViagem: 219 registros
+22/04/2026 16:49:59 - [INFO] - [premiacoes.job] totalEntregas: 114 registros
+22/04/2026 16:49:59 - [INFO] - [premiacoes.job] Todos os SQLs concluídos — 219 motoristas encontrados
+22/04/2026 16:49:59 - [INFO] - [premiacoes.job] Cache atualizado: 219 motoristas
+22/04/2026 16:49:59 - [INFO] - [premiacoes.worker] Job repeat:premiacoes-atualizar-cache:1776890996820 concluído com sucesso
+22/04/2026 16:59:56 - [INFO] - [premiacoes.worker] Iniciando processamento do job repeat:premiacoes-atualizar-cache:1776891596820
+22/04/2026 16:59:56 - [INFO] - [premiacoes.job] Iniciando atualização do cache...
+22/04/2026 16:59:56 - [INFO] - [premiacoes.job] Período: 01/04/2026 → 30/04/2026
+22/04/2026 16:59:56 - [INFO] - [premiacoes.job] Executando 6 SQLs em paralelo...
+22/04/2026 16:59:57 - [INFO] - [premiacoes.job] totaisRomaneios: 214 registros
+22/04/2026 16:59:57 - [INFO] - [premiacoes.job] resumoNotasFiscais: 214 registros
+22/04/2026 16:59:57 - [INFO] - [premiacoes.job] resumoDevolucoes: 31 registros
+22/04/2026 16:59:58 - [INFO] - [premiacoes.job] totaisViagem: 219 registros
+22/04/2026 16:59:58 - [INFO] - [premiacoes.job] resumoNotasPeso: 114 registros
+22/04/2026 16:59:58 - [INFO] - [premiacoes.job] totalEntregas: 114 registros
+22/04/2026 16:59:58 - [INFO] - [premiacoes.job] Todos os SQLs concluídos — 219 motoristas encontrados
+22/04/2026 16:59:58 - [INFO] - [premiacoes.job] Cache atualizado: 219 motoristas
+22/04/2026 16:59:59 - [INFO] - [premiacoes.worker] Job repeat:premiacoes-atualizar-cache:1776891596820 concluído com sucesso
+22/04/2026 17:22:51 - [INFO] - [premiacoes.worker] Worker registrado e aguardando jobs na fila
+22/04/2026 17:22:51 - [INFO] - [main] Servidor rodando na porta 3094
+22/04/2026 17:22:51 - [INFO] - [main] Iniciando aquecimento do cache de premiações...
+22/04/2026 17:22:51 - [INFO] - [premiacoes.job] Iniciando atualização do cache...
+22/04/2026 17:22:51 - [INFO] - [premiacoes.job] Período: 01/04/2026 → 30/04/2026
+22/04/2026 17:22:51 - [INFO] - [premiacoes.job] Executando 6 SQLs em paralelo...
+22/04/2026 17:22:51 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:22:51 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:51 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:51 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:51 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:51 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:22:51 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:51 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:51 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:22:51 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:51 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:51 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:22:51 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:51 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:51 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:22:51 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:51 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:51 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:22:52 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:52 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:52 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:22:52 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:52 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:22:52 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:53 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:53 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:53 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:22:53 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:53 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:53 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:22:53 - [INFO] - [premiacoes.job] totaisViagem: 219 registros
+22/04/2026 17:22:53 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:53 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:22:53 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:54 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:54 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:54 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:22:55 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:55 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:55 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:22:55 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:22:55 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:22:55 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:23:04 - [INFO] - [premiacoes.worker] Worker registrado e aguardando jobs na fila
+22/04/2026 17:23:04 - [INFO] - [main] Servidor rodando na porta 3094
+22/04/2026 17:23:04 - [INFO] - [main] Iniciando aquecimento do cache de premiações...
+22/04/2026 17:23:04 - [INFO] - [premiacoes.job] Iniciando atualização do cache...
+22/04/2026 17:23:04 - [INFO] - [premiacoes.job] Período: 01/04/2026 → 30/04/2026
+22/04/2026 17:23:04 - [INFO] - [premiacoes.job] Executando 6 SQLs em paralelo...
+22/04/2026 17:23:04 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:23:04 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:23:04 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:23:04 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:23:04 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:23:04 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:23:04 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:23:04 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:23:04 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:23:05 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:23:05 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:23:05 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:23:05 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:23:05 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:23:05 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:23:05 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:23:05 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:23:05 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:23:05 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:23:05 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:23:05 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:23:06 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:23:06 - [ERROR] - [redis] Erro na conexão: 
+22/04/2026 17:23:06 - [ERROR] - [premiacoes.worker] Erro no worker: 
+22/04/2026 17:24:36 - [INFO] - [premiacoes.worker] Worker registrado e aguardando jobs na fila
+22/04/2026 17:24:36 - [INFO] - [redis] Conectado ao Redis com sucesso
+22/04/2026 17:24:36 - [INFO] - [main] Servidor rodando na porta 3094
+22/04/2026 17:24:36 - [INFO] - [main] Iniciando aquecimento do cache de premiações...
+22/04/2026 17:24:36 - [INFO] - [premiacoes.job] Iniciando atualização do cache...
+22/04/2026 17:24:36 - [INFO] - [premiacoes.job] Período: 01/04/2026 → 30/04/2026
+22/04/2026 17:24:36 - [INFO] - [premiacoes.job] Executando 6 SQLs em paralelo...
+22/04/2026 17:24:38 - [INFO] - [premiacoes.job] totaisViagem: 219 registros

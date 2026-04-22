@@ -12,7 +12,9 @@ export const clienteRedis = new Redis(env.REDIS_URL, {
 });
 
 clienteRedis.on('error', (erro) => {
-  Logger.error(`[redis] Erro na conexão: ${erro.message}`);
+  Logger.error(
+    `[redis] Erro na conexão: ${erro.stack ?? erro.message ?? String(erro)}`,
+  );
 });
 
 clienteRedis.on('connect', () => {

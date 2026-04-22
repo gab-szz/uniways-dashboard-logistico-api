@@ -1,0 +1,11 @@
+node_modules
+dist
+.env
+logs
+*.log
+.git
+.gitignore
+README.md
+docker
+vitest.config.ts
+eslint.config.mjs
