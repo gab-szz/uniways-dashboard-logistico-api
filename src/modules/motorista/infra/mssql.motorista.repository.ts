@@ -2,26 +2,31 @@ import { Service } from 'fastify-decorators';
 import { conectarBanco } from '../../../config/db.js';
 import type { IMotoristaRepository } from './motorista.repository.js';
 import { MotoristaDto } from '../dtos/motorista.dto.js';
+import { motoristaSQL } from './SQL/motorista-sql.js';
 
 @Service()
 export class MssqlMotoristaRepository implements IMotoristaRepository {
   async listarTodos(): Promise<MotoristaDto[]> {
     const db = await conectarBanco();
-    const result = await db.request().query<MotoristaDto>(`
-      SELECT
-        P.HANDLE AS handle,
-        P.NOME   AS nome
-      FROM MS_PESSOA P
-      WHERE
-        P.EHMOTORISTA    = 'S'
-        AND P.INATIVACAOPESSOA IS NULL
-        AND EXISTS (
-          SELECT 1
-          FROM IN_CAMPOCOMPLEMENTAR C
-          WHERE C.HANDLEORIGEM = P.HANDLE
-            AND C.CAMPO = 'ID Ravex'
-        )
-    `);
+
+    const { dtini, dtfim } = this._definirPrazoAtividade();
+
+    const result = await db
+      .request()
+      .input('dtini', dtini)
+      .input('dtfim', dtfim)
+      .query<MotoristaDto>(motoristaSQL);
     return result.recordset;
+  }
+
+  private _definirPrazoAtividade() {
+    const hoje = new Date();
+    const dtini = new Date(hoje);
+    dtini.setDate(dtini.getDate() - 300);
+
+    const dtfim = new Date(hoje);
+    dtfim.setDate(dtfim.getDate() + 10);
+
+    return { dtini, dtfim };
   }
 }

@@ -10,6 +10,7 @@ const config: mssql.config = {
   options: {
     encrypt: false,
     trustServerCertificate: true,
+    requestTimeout: 600000, // Timeout de 10 minutos (em milissegundos)
   },
   pool: {
     max: 10,

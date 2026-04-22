@@ -1,6 +1,12 @@
 import { Inject, Service } from 'fastify-decorators';
 import type { IPremiacoesRepository } from '../../infra/premiacoes.repository.js';
 import { MssqlPremiacoesRepository } from '../../infra/mssql.premiacoes.repository.js';
+import type { PremiacoesDto } from '../../dtos/premiacoes.dto.js';
+import { obter } from '../../../../infra/cache/cache.js';
+import {
+  CHAVE_PREMIACOES,
+  unificarPremiacoes,
+} from '../../../../jobs/premiacoes/premiacoes.job.js';
 
 @Service()
 export class ListarPremiacoesUseCase {
@@ -11,8 +17,15 @@ export class ListarPremiacoesUseCase {
     if (rep) this.rep = rep;
   }
 
-  async exec(params: { dtini: string; dtfim: string }) {
-    // Garante que as datas cubram o dia inteiro ignorando qualquer hora que venha no JSON
+  async exec(params: {
+    dtini: string;
+    dtfim: string;
+  }): Promise<PremiacoesDto[]> {
+    // Tenta retornar do cache primeiro (caminho feliz)
+    const cache = await obter<PremiacoesDto[]>(CHAVE_PREMIACOES);
+    if (cache) return cache;
+
+    // Fallback: consulta o banco caso o cache ainda não esteja aquecido
     const dtini = new Date(`${params.dtini}T00:00:00`);
     const dtfim = new Date(`${params.dtfim}T23:59:59`);
 
@@ -20,11 +33,6 @@ export class ListarPremiacoesUseCase {
       throw new Error('Datas inválidas. Use o formato YYYY-MM-DD.');
     }
 
-    const periodo = {
-      dtini,
-      dtfim,
-    };
-
-    return this.rep.consultarTodas(periodo);
+    return unificarPremiacoes(this.rep, { dtini, dtfim });
   }
 }
