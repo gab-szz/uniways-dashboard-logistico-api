@@ -110,3 +110,41 @@
 22/04/2026 15:25:24 - [INFO] - [redis] Conectado ao Redis com sucesso
 22/04/2026 15:25:30 - [INFO] - [listarPremiacoes] Cache hit — retornando 219 motoristas do Redis
 22/04/2026 15:25:32 - [INFO] - [listarPremiacoes] Cache hit — retornando 219 motoristas do Redis
+22/04/2026 15:35:00 - [INFO] - [premiacoes.worker] Worker registrado e aguardando jobs na fila
+22/04/2026 15:35:00 - [INFO] - [main] Servidor rodando na porta 3094
+22/04/2026 15:35:00 - [INFO] - [main] Iniciando aquecimento do cache de premiações...
+22/04/2026 15:35:00 - [INFO] - [premiacoes.job] Iniciando atualização do cache...
+22/04/2026 15:35:00 - [INFO] - [premiacoes.job] Período: 01/04/2026 → 30/04/2026
+22/04/2026 15:35:00 - [INFO] - [premiacoes.job] Executando 6 SQLs em paralelo...
+22/04/2026 15:35:03 - [INFO] - [redis] Conectado ao Redis com sucesso
+22/04/2026 15:35:07 - [INFO] - [premiacoes.worker] Iniciando processamento do job repeat:premiacoes-atualizar-cache:1776886196820
+22/04/2026 15:35:07 - [INFO] - [premiacoes.job] Iniciando atualização do cache...
+22/04/2026 15:35:07 - [INFO] - [premiacoes.job] Período: 01/04/2026 → 30/04/2026
+22/04/2026 15:35:07 - [INFO] - [premiacoes.job] Executando 6 SQLs em paralelo...
+22/04/2026 15:35:07 - [INFO] - [premiacoes.job] totaisViagem: 219 registros
+22/04/2026 15:35:08 - [INFO] - [premiacoes.job] totaisViagem: 219 registros
+22/04/2026 15:35:09 - [INFO] - [premiacoes.job] totaisRomaneios: 214 registros
+22/04/2026 15:35:09 - [INFO] - [premiacoes.job] resumoDevolucoes: 31 registros
+22/04/2026 15:35:09 - [INFO] - [premiacoes.job] resumoNotasFiscais: 214 registros
+22/04/2026 15:35:10 - [INFO] - [premiacoes.job] resumoNotasPeso: 113 registros
+22/04/2026 15:35:10 - [INFO] - [premiacoes.job] totalEntregas: 113 registros
+22/04/2026 15:35:10 - [INFO] - [premiacoes.job] Todos os SQLs concluídos — 219 motoristas encontrados
+22/04/2026 15:35:10 - [INFO] - [premiacoes.job] Cache atualizado: 219 motoristas
+22/04/2026 15:35:11 - [INFO] - [premiacoes.worker] Job repeat:premiacoes-atualizar-cache:1776886196820 concluído com sucesso
+22/04/2026 15:35:40 - [INFO] - [listarPremiacoes] Cache hit — retornando 219 motoristas do Redis
+22/04/2026 15:39:57 - [INFO] - [premiacoes.worker] Iniciando processamento do job repeat:premiacoes-atualizar-cache:1776886796820
+22/04/2026 15:39:57 - [INFO] - [premiacoes.job] Iniciando atualização do cache...
+22/04/2026 15:39:57 - [INFO] - [premiacoes.job] Período: 01/04/2026 → 30/04/2026
+22/04/2026 15:39:57 - [INFO] - [premiacoes.job] Executando 6 SQLs em paralelo...
+22/04/2026 15:39:58 - [INFO] - [premiacoes.job] totaisRomaneios: 214 registros
+22/04/2026 15:39:58 - [INFO] - [premiacoes.job] resumoDevolucoes: 31 registros
+22/04/2026 15:39:58 - [INFO] - [premiacoes.job] totaisViagem: 219 registros
+22/04/2026 15:39:58 - [INFO] - [premiacoes.job] resumoNotasFiscais: 214 registros
+22/04/2026 15:39:59 - [INFO] - [premiacoes.job] totalEntregas: 113 registros
+22/04/2026 15:39:59 - [INFO] - [premiacoes.job] resumoNotasPeso: 113 registros
+22/04/2026 15:39:59 - [INFO] - [premiacoes.job] Todos os SQLs concluídos — 219 motoristas encontrados
+22/04/2026 15:39:59 - [INFO] - [premiacoes.job] Cache atualizado: 219 motoristas
+22/04/2026 15:39:59 - [INFO] - [premiacoes.worker] Job repeat:premiacoes-atualizar-cache:1776886796820 concluído com sucesso
+22/04/2026 15:40:00 - [ERROR] - [main] Falha no aquecimento do cache: Timeout: SQLs ultrapassaram 2 minutos
+22/04/2026 15:40:00 - [INFO] - [main] Registrando scheduler de premiações...
+22/04/2026 15:40:04 - [INFO] - [premiacoes.scheduler] Job agendado a cada 10 minutos
