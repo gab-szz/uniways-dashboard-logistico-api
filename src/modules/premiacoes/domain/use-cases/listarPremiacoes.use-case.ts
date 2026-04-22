@@ -3,6 +3,7 @@ import type { IPremiacoesRepository } from '../../infra/premiacoes.repository.js
 import { MssqlPremiacoesRepository } from '../../infra/mssql.premiacoes.repository.js';
 import type { PremiacoesDto } from '../../dtos/premiacoes.dto.js';
 import { obter } from '../../../../infra/cache/cache.js';
+import { Logger } from '../../../../logger/logger.js';
 import {
   CHAVE_PREMIACOES,
   unificarPremiacoes,
@@ -23,9 +24,18 @@ export class ListarPremiacoesUseCase {
   }): Promise<PremiacoesDto[]> {
     // Tenta retornar do cache primeiro (caminho feliz)
     const cache = await obter<PremiacoesDto[]>(CHAVE_PREMIACOES);
-    if (cache) return cache;
+    if (cache) {
+      Logger.info(
+        `[listarPremiacoes] Cache hit — retornando ${cache.length} motoristas do Redis`,
+      );
+      return cache;
+    }
 
     // Fallback: consulta o banco caso o cache ainda não esteja aquecido
+    Logger.warn(
+      '[listarPremiacoes] Cache miss — consultando banco de dados como fallback',
+    );
+
     const dtini = new Date(`${params.dtini}T00:00:00`);
     const dtfim = new Date(`${params.dtfim}T23:59:59`);
 
@@ -33,6 +43,10 @@ export class ListarPremiacoesUseCase {
       throw new Error('Datas inválidas. Use o formato YYYY-MM-DD.');
     }
 
-    return unificarPremiacoes(this.rep, { dtini, dtfim });
+    const dados = await unificarPremiacoes(this.rep, { dtini, dtfim });
+    Logger.info(
+      `[listarPremiacoes] Fallback concluído — ${dados.length} motoristas retornados`,
+    );
+    return dados;
   }
 }

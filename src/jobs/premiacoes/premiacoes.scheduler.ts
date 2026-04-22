@@ -1,5 +1,6 @@
 import { Queue } from 'bullmq';
 import { criarConexaoBullMQ } from '../../config/redis.js';
+import { Logger } from '../../logger/logger.js';
 import { NOME_FILA_PREMIACOES } from './premiacoes.job.js';
 
 const INTERVALO_MS = 10 * 60 * 1000; // 10 minutos
@@ -23,7 +24,7 @@ export async function iniciarSchedulerPremiacoes(): Promise<void> {
     { name: 'atualizar-cache', data: {} },
   );
 
-  console.log(
+  Logger.info(
     `[premiacoes.scheduler] Job agendado a cada ${INTERVALO_MS / 60000} minutos`,
   );
 

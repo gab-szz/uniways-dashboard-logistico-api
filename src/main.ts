@@ -1,5 +1,6 @@
 import servidor from './app.js';
 import { env } from './config/env.js';
+import { Logger } from './logger/logger.js';
 import { atualizarCachePremiacoes } from './jobs/premiacoes/premiacoes.job.js';
 import { iniciarSchedulerPremiacoes } from './jobs/premiacoes/premiacoes.scheduler.js';
 
@@ -8,16 +9,31 @@ import './jobs/premiacoes/premiacoes.worker.js';
 
 async function iniciar() {
   await servidor.listen({ port: env.PORTA });
-  console.log(`Servidor rodando na porta ${env.PORTA}`);
+  Logger.info(`[main] Servidor rodando na porta ${env.PORTA}`);
 
   // Aquece o cache imediatamente ao subir (não espera o primeiro job do scheduler)
-  await atualizarCachePremiacoes();
+  Logger.info('[main] Iniciando aquecimento do cache de premiações...');
+  try {
+    await atualizarCachePremiacoes();
+    Logger.info('[main] Aquecimento do cache concluído');
+  } catch (erro) {
+    Logger.error(
+      `[main] Falha no aquecimento do cache: ${erro instanceof Error ? erro.message : String(erro)}`,
+    );
+  }
 
   // Registra o job repetível no Redis
-  await iniciarSchedulerPremiacoes();
+  Logger.info('[main] Registrando scheduler de premiações...');
+  try {
+    await iniciarSchedulerPremiacoes();
+  } catch (erro) {
+    Logger.error(
+      `[main] Falha ao registrar scheduler: ${erro instanceof Error ? erro.message : String(erro)}`,
+    );
+  }
 }
 
 iniciar().catch((err) => {
-  console.error(err);
+  Logger.error(`[main] Erro fatal ao iniciar servidor: ${err.message}`);
   process.exit(1);
 });

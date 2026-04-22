@@ -5,6 +5,7 @@ import type {
 } from '../../modules/premiacoes/infra/premiacoes.repository.js';
 import type { PremiacoesDto } from '../../modules/premiacoes/dtos/premiacoes.dto.js';
 import { salvar } from '../../infra/cache/cache.js';
+import { Logger } from '../../logger/logger.js';
 
 /** Chave usada para armazenar/recuperar o cache de premiações no Redis */
 export const CHAVE_PREMIACOES = 'premiacoes:cache';
@@ -24,15 +25,38 @@ export async function unificarPremiacoes(
   rep: IPremiacoesRepository,
   periodo: periodo,
 ): Promise<PremiacoesDto[]> {
+  Logger.info(`[premiacoes.job] Executando 6 SQLs em paralelo...`);
+
+  const registrar = <T>(nome: string, promessa: Promise<T[]>): Promise<T[]> =>
+    promessa.then((r) => {
+      Logger.info(`[premiacoes.job] ${nome}: ${r.length} registros`);
+      return r;
+    });
+
+  const TIMEOUT_MS = 5 * 60_000; // 5 minutos (primeira execução pode ser lenta por cold start)
+  const timeout = new Promise<never>((_, reject) =>
+    setTimeout(
+      () => reject(new Error('Timeout: SQLs ultrapassaram 2 minutos')),
+      TIMEOUT_MS,
+    ),
+  );
+
   const [viagens, romaneios, notas, peso, devolucoes, entregas] =
-    await Promise.all([
-      rep.totaisViagem(periodo),
-      rep.totaisRomaneios(periodo),
-      rep.resumoNotasFiscais(periodo),
-      rep.resumoNotasPeso(periodo),
-      rep.resumoDevolucoes(periodo),
-      rep.totalEntregas(periodo),
+    await Promise.race([
+      Promise.all([
+        registrar('totaisViagem', rep.totaisViagem(periodo)),
+        registrar('totaisRomaneios', rep.totaisRomaneios(periodo)),
+        registrar('resumoNotasFiscais', rep.resumoNotasFiscais(periodo)),
+        registrar('resumoNotasPeso', rep.resumoNotasPeso(periodo)),
+        registrar('resumoDevolucoes', rep.resumoDevolucoes(periodo)),
+        registrar('totalEntregas', rep.totalEntregas(periodo)),
+      ]),
+      timeout,
     ]);
+
+  Logger.info(
+    `[premiacoes.job] Todos os SQLs concluídos — ${viagens.length} motoristas encontrados`,
+  );
 
   // Mapa indexado pelo handle do motorista para montar o DTO unificado
   const mapa = new Map<number, PremiacoesDto>();
@@ -111,19 +135,30 @@ export async function unificarPremiacoes(
  * Chamada no boot da aplicação e repetida a cada 10 minutos pelo worker.
  */
 export async function atualizarCachePremiacoes(): Promise<void> {
+  Logger.info('[premiacoes.job] Iniciando atualização do cache...');
+
   const rep = new MssqlPremiacoesRepository();
 
   const hoje = new Date();
 
-  const dtini = new Date(hoje);
-  dtini.setDate(dtini.getDate() - 300);
+  // Período: primeiro ao último dia do mês atual
+  const dtini = new Date(hoje.getFullYear(), hoje.getMonth(), 1);
+  const dtfim = new Date(
+    hoje.getFullYear(),
+    hoje.getMonth() + 1,
+    0,
+    23,
+    59,
+    59,
+  );
 
-  const dtfim = new Date(hoje);
-  dtfim.setDate(dtfim.getDate() + 10);
+  Logger.info(
+    `[premiacoes.job] Período: ${dtini.toLocaleDateString('pt-BR')} → ${dtfim.toLocaleDateString('pt-BR')}`,
+  );
 
   const dados = await unificarPremiacoes(rep, { dtini, dtfim });
 
   await salvar(CHAVE_PREMIACOES, dados);
 
-  console.log(`[premiacoes.job] Cache atualizado: ${dados.length} motoristas`);
+  Logger.info(`[premiacoes.job] Cache atualizado: ${dados.length} motoristas`);
 }
