@@ -1,17 +1,13 @@
 import servidor from './app.js';
 import { env } from './config/env.js';
-import { Logger } from './logger/logger.js';
 import { atualizarCachePremiacoes } from './jobs/premiacoes/premiacoes.job.js';
-import { iniciarSchedulerPremiacoes } from './jobs/premiacoes/premiacoes.scheduler.js';
-
-// Registra o worker (side-effect: inicia o processo de escuta da fila)
-import './jobs/premiacoes/premiacoes.worker.js';
+import { iniciarAgendadorPremiacoes } from './jobs/premiacoes/premiacoes.scheduler.js';
+import { Logger } from './logger/logger.js';
 
 async function iniciar() {
   await servidor.listen({ port: env.PORTA });
   Logger.info(`[main] Servidor rodando na porta ${env.PORTA}`);
 
-  // Aquece o cache imediatamente ao subir (não espera o primeiro job do scheduler)
   Logger.info('[main] Iniciando aquecimento do cache de premiações...');
   try {
     await atualizarCachePremiacoes();
@@ -22,10 +18,9 @@ async function iniciar() {
     );
   }
 
-  // Registra o job repetível no Redis
   Logger.info('[main] Registrando scheduler de premiações...');
   try {
-    await iniciarSchedulerPremiacoes();
+    await iniciarAgendadorPremiacoes();
   } catch (erro) {
     Logger.error(
       `[main] Falha ao registrar scheduler: ${erro instanceof Error ? erro.message : String(erro)}`,
