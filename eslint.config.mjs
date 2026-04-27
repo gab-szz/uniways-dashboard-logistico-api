@@ -39,7 +39,7 @@ export default tseslint.config(
           singleQuote: true, // Use aspas simples
           semi: true, // Use ponto e vírgula
           endOfLine: 'lf', // Unix line endings
-          printWidth: 80, // Largura recomendada padrão
+          printWidth: 90, // Largura recomendada padrão
         },
       ],
     },
