@@ -2,12 +2,10 @@ import { Inject, Service } from 'fastify-decorators';
 import type { IPremiacoesRepository } from '../../infra/premiacoes.repository.js';
 import { MssqlPremiacoesRepository } from '../../infra/mssql.premiacoes.repository.js';
 import type { PremiacoesDto } from '../../dtos/premiacoes.dto.js';
-import { obter } from '../../../../infra/cache/cache.js';
+import { obter, salvar } from '../../../../infra/cache/cache.js';
 import { Logger } from '../../../../logger/logger.js';
-import {
-  CHAVE_PREMIACOES,
-  unificarPremiacoes,
-} from '../../../../jobs/premiacoes/premiacoes.job.js';
+import { CHAVE_PREMIACOES } from '../../../../jobs/premiacoes/consts.js';
+import { PremiacoesJob } from '../../../../jobs/premiacoes/premiacoes.job.js';
 
 @Service()
 export class ListarPremiacoesUseCase {
@@ -18,10 +16,7 @@ export class ListarPremiacoesUseCase {
     if (rep) this.rep = rep;
   }
 
-  async exec(params: {
-    dtini: string;
-    dtfim: string;
-  }): Promise<PremiacoesDto[]> {
+  async exec(params: { dtini: string; dtfim: string }): Promise<PremiacoesDto[]> {
     // Tenta retornar do cache primeiro (caminho feliz)
     const cache = await obter<PremiacoesDto[]>(CHAVE_PREMIACOES);
     if (cache) {
@@ -43,9 +38,10 @@ export class ListarPremiacoesUseCase {
       throw new Error('Datas inválidas. Use o formato YYYY-MM-DD.');
     }
 
-    const dados = await unificarPremiacoes(this.rep, { dtini, dtfim });
+    const dados = await new PremiacoesJob(this.rep).exec({ dtini, dtfim });
+    await salvar(CHAVE_PREMIACOES, dados);
     Logger.info(
-      `[listarPremiacoes] Fallback concluído — ${dados.length} motoristas retornados`,
+      `[listarPremiacoes] Fallback concluído — ${dados.length} motoristas retornados e cache populado`,
     );
     return dados;
   }

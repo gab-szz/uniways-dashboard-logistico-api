@@ -1,5 +1,5 @@
 import { Service } from 'fastify-decorators';
-import { IPremiacoesRepository, periodo } from './premiacoes.repository.js';
+import { IPremiacoesRepository, PeriodoDTO } from './premiacoes.repository.js';
 import { conectarBanco } from '../../../config/db.js';
 import {
   TotaisViagemDto,
@@ -18,7 +18,7 @@ import { totalEntregasSQL } from './SQL/6-total-entregas.sql.js';
 
 @Service()
 export class MssqlPremiacoesRepository implements IPremiacoesRepository {
-  async totaisViagem(periodo: periodo) {
+  async totaisViagem(periodo: PeriodoDTO) {
     const db = await conectarBanco();
     const result = await db
       .request()
@@ -29,7 +29,7 @@ export class MssqlPremiacoesRepository implements IPremiacoesRepository {
     return result.recordset;
   }
 
-  async totaisRomaneios(periodo: periodo) {
+  async totaisRomaneios(periodo: PeriodoDTO) {
     const db = await conectarBanco();
     const result = await db
       .request()
@@ -40,7 +40,7 @@ export class MssqlPremiacoesRepository implements IPremiacoesRepository {
     return result.recordset;
   }
 
-  async resumoNotasFiscais(periodo: periodo) {
+  async resumoNotasFiscais(periodo: PeriodoDTO) {
     const db = await conectarBanco();
     const result = await db
       .request()
@@ -51,7 +51,7 @@ export class MssqlPremiacoesRepository implements IPremiacoesRepository {
     return result.recordset;
   }
 
-  async resumoNotasPeso(periodo: periodo) {
+  async resumoNotasPeso(periodo: PeriodoDTO) {
     const db = await conectarBanco();
     const result = await db
       .request()
@@ -62,7 +62,7 @@ export class MssqlPremiacoesRepository implements IPremiacoesRepository {
     return result.recordset;
   }
 
-  async resumoDevolucoes(periodo: periodo) {
+  async resumoDevolucoes(periodo: PeriodoDTO) {
     const db = await conectarBanco();
     const result = await db
       .request()
@@ -73,7 +73,7 @@ export class MssqlPremiacoesRepository implements IPremiacoesRepository {
     return result.recordset;
   }
 
-  async totalEntregas(periodo: periodo) {
+  async totalEntregas(periodo: PeriodoDTO) {
     const db = await conectarBanco();
     const result = await db
       .request()

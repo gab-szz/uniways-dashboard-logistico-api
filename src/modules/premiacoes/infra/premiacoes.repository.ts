@@ -7,16 +7,16 @@ import {
   TotalEntregasDto,
 } from '../dtos/premiacoes.dto.js';
 
-export type periodo = {
+export type PeriodoDTO = {
   dtini: Date;
   dtfim: Date;
 };
 
 export interface IPremiacoesRepository {
-  totaisViagem(periodo: periodo): Promise<TotaisViagemDto[]>;
-  totaisRomaneios(periodo: periodo): Promise<TotaisRomaneiosDto[]>;
-  resumoNotasFiscais(periodo: periodo): Promise<ResumoNotasFiscaisDto[]>;
-  resumoNotasPeso(periodo: periodo): Promise<ResumoNotasPesoDto[]>;
-  resumoDevolucoes(periodo: periodo): Promise<ResumoDevolucoesDto[]>;
-  totalEntregas(periodo: periodo): Promise<TotalEntregasDto[]>;
+  totaisViagem(periodo: PeriodoDTO): Promise<TotaisViagemDto[]>;
+  totaisRomaneios(periodo: PeriodoDTO): Promise<TotaisRomaneiosDto[]>;
+  resumoNotasFiscais(periodo: PeriodoDTO): Promise<ResumoNotasFiscaisDto[]>;
+  resumoNotasPeso(periodo: PeriodoDTO): Promise<ResumoNotasPesoDto[]>;
+  resumoDevolucoes(periodo: PeriodoDTO): Promise<ResumoDevolucoesDto[]>;
+  totalEntregas(periodo: PeriodoDTO): Promise<TotalEntregasDto[]>;
 }
