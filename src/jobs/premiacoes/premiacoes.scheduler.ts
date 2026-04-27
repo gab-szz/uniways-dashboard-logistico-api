@@ -1,25 +1,20 @@
 import { Queue } from 'bullmq';
+import { INTERVALO_MS, NOME_FILA_PREMIACOES } from './consts.js';
 import { criarConexaoBullMQ } from '../../config/redis.js';
 import { Logger } from '../../logger/logger.js';
-import { NOME_FILA_PREMIACOES } from './premiacoes.job.js';
-
-const INTERVALO_MS = 10 * 60 * 1000; // 10 minutos
 
 /**
  * Inicializa o scheduler que agenda o job de premiações repetível.
  *
- * Usa `upsertJobScheduler` (BullMQ v5+), que é idempotente:
- * chamar novamente após um restart atualiza o agendamento em vez de duplicar.
- *
  * Deve ser chamado uma única vez no boot da aplicação, após o aquecimento inicial.
  */
-export async function iniciarSchedulerPremiacoes(): Promise<void> {
+export async function iniciarAgendadorPremiacoes(): Promise<void> {
   const fila = new Queue(NOME_FILA_PREMIACOES, {
     connection: criarConexaoBullMQ(),
   });
 
   await fila.upsertJobScheduler(
-    'premiacoes-atualizar-cache', // ID único do scheduler (chave idempotente)
+    'premiacoes-atualizar-cache',
     { every: INTERVALO_MS },
     { name: 'atualizar-cache', data: {} },
   );
