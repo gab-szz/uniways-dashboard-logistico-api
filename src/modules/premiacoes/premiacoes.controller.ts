@@ -1,16 +1,14 @@
-import { Controller, GET, Inject } from 'fastify-decorators';
-import type { FastifyRequest, FastifyReply } from 'fastify';
+import type { FastifyRequest, FastifyReply, FastifyInstance } from 'fastify';
 import { ListarPremiacoesUseCase } from './use-cases/listarPremiacoes.use-case.js';
 import { ListarPremiacoesSchema } from './dtos/listar-premiacoes.dto.js';
 import z from 'zod';
+import { MssqlPremiacoesRepository } from './infra/mssql.premiacoes.repository.js';
 
-@Controller({ route: '/premiacoes' })
-export default class PremiacoesController {
-  @Inject(ListarPremiacoesUseCase)
-  private readonly listarUseCase!: ListarPremiacoesUseCase;
+export default function premiacoesRoutes(app: FastifyInstance) {
+  const repository = new MssqlPremiacoesRepository();
+  const listarUseCase = new ListarPremiacoesUseCase(repository);
 
-  @GET({ url: '/' })
-  async getStatus(request: FastifyRequest, reply: FastifyReply) {
+  app.get('/', async (request: FastifyRequest, reply: FastifyReply) => {
     const filtros = ListarPremiacoesSchema.safeParse(request.query);
 
     if (!filtros.success) {
@@ -21,8 +19,8 @@ export default class PremiacoesController {
     }
 
     const { dtini, dtfim } = filtros.data;
-    const premiacoes = await this.listarUseCase.exec({ dtini, dtfim });
+    const premiacoes = await listarUseCase.exec({ dtini, dtfim });
 
     return reply.status(200).send(premiacoes);
-  }
+  });
 }

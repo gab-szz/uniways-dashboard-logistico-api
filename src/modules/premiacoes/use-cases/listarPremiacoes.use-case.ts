@@ -1,19 +1,15 @@
-import { Inject, Service } from 'fastify-decorators';
 import type { IPremiacoesRepository } from '../infra/premiacoes.repository.js';
-import { MssqlPremiacoesRepository } from '../infra/mssql.premiacoes.repository.js';
 import type { PremiacoesDto } from '../dtos/premiacoes.dto.js';
 import { obter, salvar } from '../../../infra/cache/cache.js';
 import { Logger } from '../../../logger/logger.js';
 import { chaveCachePremiacoes } from '../../../jobs/premiacoes/consts.js';
 import { PremiacoesJob } from '../../../jobs/premiacoes/premiacoes.job.js';
 
-@Service()
 export class ListarPremiacoesUseCase {
-  @Inject(MssqlPremiacoesRepository)
-  private readonly rep!: IPremiacoesRepository;
+  private readonly rep: IPremiacoesRepository;
 
-  constructor(rep?: IPremiacoesRepository) {
-    if (rep) this.rep = rep;
+  constructor(rep: IPremiacoesRepository) {
+    this.rep = rep;
   }
 
   async exec(params: { dtini: string; dtfim: string }): Promise<PremiacoesDto[]> {

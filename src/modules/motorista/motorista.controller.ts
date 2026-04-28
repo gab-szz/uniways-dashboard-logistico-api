@@ -1,15 +1,13 @@
-import { Controller, GET, Inject } from 'fastify-decorators';
-import type { FastifyRequest, FastifyReply } from 'fastify';
-import { ListarMotoristasUseCase } from './domain/use-cases/listarMotoristas.use-case.js';
+import type { FastifyRequest, FastifyReply, FastifyInstance } from 'fastify';
+import { ListarMotoristasUseCase } from './use-cases/listarMotoristas.use-case.js';
+import { MssqlMotoristaRepository } from './infra/mssql.motorista.repository.js';
 
-@Controller({ route: '/motoristas' })
-export default class MotoristaController {
-  @Inject(ListarMotoristasUseCase)
-  private listarMotoristasUseCase!: ListarMotoristasUseCase;
+export default function motoristasRoutes(app: FastifyInstance) {
+  const repository = new MssqlMotoristaRepository();
+  const listarUseCase = new ListarMotoristasUseCase(repository);
 
-  @GET({ url: '/' })
-  async listar(_request: FastifyRequest, reply: FastifyReply) {
-    const motoristas = await this.listarMotoristasUseCase.execute();
-    reply.send(motoristas);
-  }
+  app.get('/', async (_request: FastifyRequest, reply: FastifyReply) => {
+    const motoristas = await listarUseCase.exec();
+    reply.status(200).send(motoristas);
+  });
 }

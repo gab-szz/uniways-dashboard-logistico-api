@@ -1,10 +1,8 @@
-import { Service } from 'fastify-decorators';
 import { conectarBanco } from '../../../config/db.js';
 import type { IMotoristaRepository } from './motorista.repository.js';
 import { MotoristaDto } from '../dtos/motorista.dto.js';
 import { motoristaSQL } from './SQL/motorista-sql.js';
 
-@Service()
 export class MssqlMotoristaRepository implements IMotoristaRepository {
   async listarTodos(): Promise<MotoristaDto[]> {
     const db = await conectarBanco();

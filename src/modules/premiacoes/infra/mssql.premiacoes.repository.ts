@@ -1,4 +1,3 @@
-import { Service } from 'fastify-decorators';
 import { IPremiacoesRepository, PeriodoDTO } from './premiacoes.repository.js';
 import { conectarBanco } from '../../../config/db.js';
 import {
@@ -16,7 +15,6 @@ import { resumoNotasPesoSQL } from './SQL/4-resumo-notas-peso-ent.sql.js';
 import { resumoDevolucoesSQL } from './SQL/5-resumo-devolucoes.sql.js';
 import { totalEntregasSQL } from './SQL/6-total-entregas.sql.js';
 
-@Service()
 export class MssqlPremiacoesRepository implements IPremiacoesRepository {
   async totaisViagem(periodo: PeriodoDTO) {
     const db = await conectarBanco();
