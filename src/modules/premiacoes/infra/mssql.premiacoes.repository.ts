@@ -1,12 +1,12 @@
 import { IPremiacoesRepository, PeriodoDTO } from './premiacoes.repository.js';
 import { conectarBanco } from '../../../config/db.js';
 import {
-  TotaisViagemDto,
-  TotaisRomaneiosDto,
-  ResumoNotasFiscaisDto,
-  ResumoNotasPesoDto,
-  ResumoDevolucoesDto,
-  TotalEntregasDto,
+  TotaisViagemDTO,
+  TotaisRomaneiosDTO,
+  ResumoNotasFiscaisDTO,
+  ResumoNotasPesoDTO,
+  ResumoDevolucoesDTO,
+  TotalEntregasDTO,
 } from '../dtos/premiacoes.dto.js';
 import { totaisViagemSQL } from './SQL/1-totais-viagem.sql.js';
 import { totaisRomaneiosSQL } from './SQL/2-totais-romaneios.sql.js';
@@ -22,7 +22,7 @@ export class MssqlPremiacoesRepository implements IPremiacoesRepository {
       .request()
       .input('dtini', periodo.dtini)
       .input('dtfim', periodo.dtfim)
-      .query<TotaisViagemDto>(totaisViagemSQL);
+      .query<TotaisViagemDTO>(totaisViagemSQL);
 
     return result.recordset;
   }
@@ -33,7 +33,7 @@ export class MssqlPremiacoesRepository implements IPremiacoesRepository {
       .request()
       .input('dtini', periodo.dtini)
       .input('dtfim', periodo.dtfim)
-      .query<TotaisRomaneiosDto>(totaisRomaneiosSQL);
+      .query<TotaisRomaneiosDTO>(totaisRomaneiosSQL);
 
     return result.recordset;
   }
@@ -44,7 +44,7 @@ export class MssqlPremiacoesRepository implements IPremiacoesRepository {
       .request()
       .input('dtini', periodo.dtini)
       .input('dtfim', periodo.dtfim)
-      .query<ResumoNotasFiscaisDto>(resumoNotasFiscaisSQL);
+      .query<ResumoNotasFiscaisDTO>(resumoNotasFiscaisSQL);
 
     return result.recordset;
   }
@@ -55,7 +55,7 @@ export class MssqlPremiacoesRepository implements IPremiacoesRepository {
       .request()
       .input('dtini', periodo.dtini)
       .input('dtfim', periodo.dtfim)
-      .query<ResumoNotasPesoDto>(resumoNotasPesoSQL);
+      .query<ResumoNotasPesoDTO>(resumoNotasPesoSQL);
 
     return result.recordset;
   }
@@ -66,7 +66,7 @@ export class MssqlPremiacoesRepository implements IPremiacoesRepository {
       .request()
       .input('dtini', periodo.dtini)
       .input('dtfim', periodo.dtfim)
-      .query<ResumoDevolucoesDto>(resumoDevolucoesSQL);
+      .query<ResumoDevolucoesDTO>(resumoDevolucoesSQL);
 
     return result.recordset;
   }
@@ -77,7 +77,7 @@ export class MssqlPremiacoesRepository implements IPremiacoesRepository {
       .request()
       .input('dtini', periodo.dtini)
       .input('dtfim', periodo.dtfim)
-      .query<TotalEntregasDto>(totalEntregasSQL);
+      .query<TotalEntregasDTO>(totalEntregasSQL);
 
     return result.recordset;
   }

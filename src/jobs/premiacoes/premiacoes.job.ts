@@ -1,13 +1,13 @@
 import { salvar } from '../../infra/cache/cache.js';
 import { Logger } from '../../logger/logger.js';
 import {
-  PremiacoesDto,
-  ResumoDevolucoesDto,
-  ResumoNotasFiscaisDto,
-  ResumoNotasPesoDto,
-  TotaisRomaneiosDto,
-  TotaisViagemDto,
-  TotalEntregasDto,
+  PremiacoesDTO,
+  ResumoDevolucoesDTO,
+  ResumoNotasFiscaisDTO,
+  ResumoNotasPesoDTO,
+  TotaisRomaneiosDTO,
+  TotaisViagemDTO,
+  TotalEntregasDTO,
 } from '../../modules/premiacoes/dtos/premiacoes.dto.js';
 import { MssqlPremiacoesRepository } from '../../modules/premiacoes/infra/mssql.premiacoes.repository.js';
 import {
@@ -51,13 +51,13 @@ export class PremiacoesJob {
 
   constructor(private readonly rep: IPremiacoesRepository) {}
 
-  async exec(periodo: PeriodoDTO): Promise<PremiacoesDto[]> {
+  async exec(periodo: PeriodoDTO): Promise<PremiacoesDTO[]> {
     Logger.info(`[premiacoes.job] Executando 6 SQLs em paralelo...`);
 
     const { viagens, romaneios, notas, peso, devolucoes, entregas } =
       await this._executarConsultasSQL(periodo);
 
-    const premiacaoPorMotoristaMap = new Map<number, PremiacoesDto>();
+    const premiacaoPorMotoristaMap = new Map<number, PremiacoesDTO>();
 
     PremiacoesJob._montarViagensPorMotorista(premiacaoPorMotoristaMap, viagens);
     PremiacoesJob._inserirRomaneios(premiacaoPorMotoristaMap, romaneios);
@@ -121,8 +121,8 @@ export class PremiacoesJob {
    * @param viagens Resultado do SQL `totaisViagem`
    */
   private static _montarViagensPorMotorista(
-    cabecalho: Map<number, PremiacoesDto>,
-    viagens: TotaisViagemDto[],
+    cabecalho: Map<number, PremiacoesDTO>,
+    viagens: TotaisViagemDTO[],
   ) {
     for (const viagem of viagens) {
       cabecalho.set(viagem.handle, {
@@ -150,8 +150,8 @@ export class PremiacoesJob {
    * @param romaneios Resultado do SQL `totaisRomaneios`
    */
   private static _inserirRomaneios(
-    cabecalho: Map<number, PremiacoesDto>,
-    romaneios: TotaisRomaneiosDto[],
+    cabecalho: Map<number, PremiacoesDTO>,
+    romaneios: TotaisRomaneiosDTO[],
   ) {
     for (const romaneio of romaneios) {
       const motorista = cabecalho.get(romaneio.motorista);
@@ -167,8 +167,8 @@ export class PremiacoesJob {
    * @param notas Resultado do SQL `resumoNotasFiscais`
    */
   private static _inserirNotasFiscais(
-    cabecalho: Map<number, PremiacoesDto>,
-    notas: ResumoNotasFiscaisDto[],
+    cabecalho: Map<number, PremiacoesDTO>,
+    notas: ResumoNotasFiscaisDTO[],
   ) {
     for (const nota of notas) {
       const motorista = cabecalho.get(nota.motorista);
@@ -183,8 +183,8 @@ export class PremiacoesJob {
    * @param infos Resultado do SQL `resumoNotasPeso`
    */
   private static _inserirPeso(
-    cabecalho: Map<number, PremiacoesDto>,
-    infos: ResumoNotasPesoDto[],
+    cabecalho: Map<number, PremiacoesDTO>,
+    infos: ResumoNotasPesoDTO[],
   ) {
     for (const info of infos) {
       const motorista = cabecalho.get(info.motorista);
@@ -200,8 +200,8 @@ export class PremiacoesJob {
    * @param devolucoes Resultado do SQL `resumoDevolucoes`
    */
   private static _inserirDevolucoes(
-    cabecalho: Map<number, PremiacoesDto>,
-    devolucoes: ResumoDevolucoesDto[],
+    cabecalho: Map<number, PremiacoesDTO>,
+    devolucoes: ResumoDevolucoesDTO[],
   ) {
     for (const devolucao of devolucoes) {
       const motorista = cabecalho.get(devolucao.motorista);
@@ -217,8 +217,8 @@ export class PremiacoesJob {
    * @param entregas Resultado do SQL `totalEntregas`
    */
   private static _inserirEntregas(
-    cabecalho: Map<number, PremiacoesDto>,
-    entregas: TotalEntregasDto[],
+    cabecalho: Map<number, PremiacoesDTO>,
+    entregas: TotalEntregasDTO[],
   ) {
     for (const entrega of entregas) {
       const motorista = cabecalho.get(entrega.motorista);

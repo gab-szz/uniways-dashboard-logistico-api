@@ -5,9 +5,13 @@ import z from 'zod';
 import { MssqlPremiacoesRepository } from './infra/mssql.premiacoes.repository.js';
 
 export default function premiacoesRoutes(app: FastifyInstance) {
+  // Injeção de Classes
   const repository = new MssqlPremiacoesRepository();
   const listarUseCase = new ListarPremiacoesUseCase(repository);
 
+  /** GET - consulta as premiações filtrando apenas por data
+   * @returns PremiacoesDto[] - Objeto com todos dados formatados e calculados
+   */
   app.get('/', async (request: FastifyRequest, reply: FastifyReply) => {
     const filtros = ListarPremiacoesSchema.safeParse(request.query);
 

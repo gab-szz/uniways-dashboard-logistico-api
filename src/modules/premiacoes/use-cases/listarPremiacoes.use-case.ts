@@ -1,5 +1,5 @@
 import type { IPremiacoesRepository } from '../infra/premiacoes.repository.js';
-import type { PremiacoesDto } from '../dtos/premiacoes.dto.js';
+import type { PremiacoesDTO } from '../dtos/premiacoes.dto.js';
 import { obter, salvar } from '../../../infra/cache/cache.js';
 import { Logger } from '../../../logger/logger.js';
 import { chaveCachePremiacoes } from '../../../jobs/premiacoes/consts.js';
@@ -12,7 +12,7 @@ export class ListarPremiacoesUseCase {
     this.rep = rep;
   }
 
-  async exec(params: { dtini: string; dtfim: string }): Promise<PremiacoesDto[]> {
+  async exec(params: { dtini: string; dtfim: string }): Promise<PremiacoesDTO[]> {
     const chave = chaveCachePremiacoes(params.dtini, params.dtfim);
 
     const dadosCache = await this._consultarNoCache(chave);
@@ -27,8 +27,8 @@ export class ListarPremiacoesUseCase {
    *
    * @returns PremiacoesDto[] -> Dados da premiação ou lista vazia
    */
-  private async _consultarNoCache(chave: string): Promise<PremiacoesDto[] | null> {
-    const cache = await obter<PremiacoesDto[]>(chave);
+  private async _consultarNoCache(chave: string): Promise<PremiacoesDTO[] | null> {
+    const cache = await obter<PremiacoesDTO[]>(chave);
     if (cache) {
       Logger.info(
         `[listarPremiacoes] Cache hit — retornando ${cache.length} motoristas do Redis`,
@@ -49,7 +49,7 @@ export class ListarPremiacoesUseCase {
   private async _fallbackConsultarNoBanco(
     params: { dtini: string; dtfim: string },
     chave: string,
-  ): Promise<PremiacoesDto[]> {
+  ): Promise<PremiacoesDTO[]> {
     const dtini = new Date(`${params.dtini}T00:00:00`);
     const dtfim = new Date(`${params.dtfim}T23:59:59`);
 

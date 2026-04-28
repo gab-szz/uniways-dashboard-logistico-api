@@ -1,10 +1,10 @@
 import {
-  TotaisViagemDto,
-  TotaisRomaneiosDto,
-  ResumoNotasFiscaisDto,
-  ResumoNotasPesoDto,
-  ResumoDevolucoesDto,
-  TotalEntregasDto,
+  ResumoDevolucoesDTO,
+  ResumoNotasFiscaisDTO,
+  ResumoNotasPesoDTO,
+  TotaisRomaneiosDTO,
+  TotaisViagemDTO,
+  TotalEntregasDTO,
 } from '../dtos/premiacoes.dto.js';
 
 export type PeriodoDTO = {
@@ -13,10 +13,10 @@ export type PeriodoDTO = {
 };
 
 export interface IPremiacoesRepository {
-  totaisViagem(periodo: PeriodoDTO): Promise<TotaisViagemDto[]>;
-  totaisRomaneios(periodo: PeriodoDTO): Promise<TotaisRomaneiosDto[]>;
-  resumoNotasFiscais(periodo: PeriodoDTO): Promise<ResumoNotasFiscaisDto[]>;
-  resumoNotasPeso(periodo: PeriodoDTO): Promise<ResumoNotasPesoDto[]>;
-  resumoDevolucoes(periodo: PeriodoDTO): Promise<ResumoDevolucoesDto[]>;
-  totalEntregas(periodo: PeriodoDTO): Promise<TotalEntregasDto[]>;
+  totaisViagem(periodo: PeriodoDTO): Promise<TotaisViagemDTO[]>;
+  totaisRomaneios(periodo: PeriodoDTO): Promise<TotaisRomaneiosDTO[]>;
+  resumoNotasFiscais(periodo: PeriodoDTO): Promise<ResumoNotasFiscaisDTO[]>;
+  resumoNotasPeso(periodo: PeriodoDTO): Promise<ResumoNotasPesoDTO[]>;
+  resumoDevolucoes(periodo: PeriodoDTO): Promise<ResumoDevolucoesDTO[]>;
+  totalEntregas(periodo: PeriodoDTO): Promise<TotalEntregasDTO[]>;
 }

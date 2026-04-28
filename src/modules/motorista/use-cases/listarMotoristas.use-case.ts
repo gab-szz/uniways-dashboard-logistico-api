@@ -1,5 +1,5 @@
+import { MotoristaDTO } from '../dtos/motorista.dto.js';
 import type { IMotoristaRepository } from '../infra/motorista.repository.js';
-import { MotoristaDto } from '../dtos/motorista.dto.js';
 
 export class ListarMotoristasUseCase {
   private rep: IMotoristaRepository;
@@ -8,7 +8,7 @@ export class ListarMotoristasUseCase {
     this.rep = repositorio;
   }
 
-  async exec(): Promise<MotoristaDto[]> {
+  async exec(): Promise<MotoristaDTO[]> {
     return await this.rep.listarTodos();
   }
 }

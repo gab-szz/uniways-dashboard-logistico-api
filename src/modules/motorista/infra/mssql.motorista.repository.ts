@@ -1,10 +1,10 @@
 import { conectarBanco } from '../../../config/db.js';
 import type { IMotoristaRepository } from './motorista.repository.js';
-import { MotoristaDto } from '../dtos/motorista.dto.js';
+import { MotoristaDTO } from '../dtos/motorista.dto.js';
 import { motoristaSQL } from './SQL/motorista-sql.js';
 
 export class MssqlMotoristaRepository implements IMotoristaRepository {
-  async listarTodos(): Promise<MotoristaDto[]> {
+  async listarTodos(): Promise<MotoristaDTO[]> {
     const db = await conectarBanco();
 
     const { dtini, dtfim } = this._definirPrazoAtividade();
@@ -13,7 +13,7 @@ export class MssqlMotoristaRepository implements IMotoristaRepository {
       .request()
       .input('dtini', dtini)
       .input('dtfim', dtfim)
-      .query<MotoristaDto>(motoristaSQL);
+      .query<MotoristaDTO>(motoristaSQL);
     return result.recordset;
   }
 
