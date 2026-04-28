@@ -2,6 +2,7 @@ import servidor from './app.js';
 import { env } from './config/env.js';
 import { atualizarCachePremiacoes } from './jobs/premiacoes/premiacoes.job.js';
 import { iniciarAgendadorPremiacoes } from './jobs/premiacoes/premiacoes.scheduler.js';
+import './jobs/premiacoes/premiacoes.worker.js';
 import { Logger } from './logger/logger.js';
 
 async function iniciar() {

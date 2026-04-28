@@ -1,6 +1,6 @@
 import { Controller, GET, Inject } from 'fastify-decorators';
 import type { FastifyRequest, FastifyReply } from 'fastify';
-import { ListarPremiacoesUseCase } from './domain/use-cases/listarPremiacoes.use-case.js';
+import { ListarPremiacoesUseCase } from './use-cases/listarPremiacoes.use-case.js';
 import { ListarPremiacoesSchema } from './dtos/listar-premiacoes.dto.js';
 import z from 'zod';
 
@@ -9,20 +9,18 @@ export default class PremiacoesController {
   @Inject(ListarPremiacoesUseCase)
   private readonly listarUseCase!: ListarPremiacoesUseCase;
 
-  // GET /premiacoes
   @GET({ url: '/' })
   async getStatus(request: FastifyRequest, reply: FastifyReply) {
-    // Validação usando Zod
-    const query = ListarPremiacoesSchema.safeParse(request.query);
+    const filtros = ListarPremiacoesSchema.safeParse(request.query);
 
-    if (!query.success) {
+    if (!filtros.success) {
       return reply.status(400).send({
         error: 'Parâmetros inválidos',
-        details: z.treeifyError(query.error),
+        details: z.treeifyError(filtros.error),
       });
     }
 
-    const { dtini, dtfim } = query.data;
+    const { dtini, dtfim } = filtros.data;
     const premiacoes = await this.listarUseCase.exec({ dtini, dtfim });
 
     return reply.status(200).send(premiacoes);

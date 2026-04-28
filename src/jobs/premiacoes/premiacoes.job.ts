@@ -14,7 +14,7 @@ import {
   IPremiacoesRepository,
   PeriodoDTO,
 } from '../../modules/premiacoes/infra/premiacoes.repository.js';
-import { CHAVE_PREMIACOES } from './consts.js';
+import { chaveCachePremiacoes, formatarData } from './consts.js';
 
 export async function atualizarCachePremiacoes(): Promise<void> {
   Logger.info('[premiacoes.job] Iniciando atualização do cache...');
@@ -30,8 +30,11 @@ export async function atualizarCachePremiacoes(): Promise<void> {
 
   const dados = await new PremiacoesJob(rep).exec({ dtini, dtfim });
 
-  await salvar(CHAVE_PREMIACOES, dados);
-  Logger.info(`[premiacoes.job] Cache atualizado: ${dados.length} motoristas`);
+  const chave = chaveCachePremiacoes(formatarData(dtini), formatarData(dtfim));
+  await salvar(chave, dados);
+  Logger.info(
+    `[premiacoes.job] Cache atualizado: ${dados.length} motoristas — chave: ${chave}`,
+  );
 }
 
 /**

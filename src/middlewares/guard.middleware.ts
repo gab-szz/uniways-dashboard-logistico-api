@@ -20,6 +20,6 @@ export async function guardMiddleware(request: FastifyRequest, reply: FastifyRep
       `🛑 Acesso bloqueado - credenciais ausentes.\n` +
         `Req: ${metodo}:${rota}\nIP: ${ip}\nHeaders: ${JSON.stringify(request.headers)}`,
     );
-    reply.status(401).send({ mensagem: 'Credenciais ausentes' });
+    return reply.status(401).send({ mensagem: 'Credenciais ausentes' });
   }
 }
