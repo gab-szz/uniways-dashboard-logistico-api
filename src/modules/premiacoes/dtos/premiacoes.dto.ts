@@ -49,12 +49,23 @@ export interface PremiacoesDTO {
   finalizadas_total: number;
   finalizadas_ravex: number;
   ton_geral: number;
+  premiacao_por_ton?: number;
   volume_geral: number;
   total_notas_emitidas: number;
   total_notas_premiacao: number;
   qtd_entregas_realizadas: number;
+  premiacao_por_entrega?: number;
   ton_entregue_real: number;
   total_notas_entregues: number;
   ton_devolvida: number;
   total_notas_devolvidas: number;
+}
+
+export interface SumarioDTO {
+  total_premiacao: number;
+  peso_total_ton: number;
+  ton_entregue_real: number;
+  ton_devolvida: number;
+  total_viagens: number;
+  qtd_entregas_realizadas: number;
 }

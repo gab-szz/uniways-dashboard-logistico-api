@@ -1,9 +1,10 @@
 import type { IPremiacoesRepository } from '../infra/premiacoes.repository.js';
-import type { PremiacoesDTO } from '../dtos/premiacoes.dto.js';
+import type { PremiacoesDTO, SumarioDTO } from '../dtos/premiacoes.dto.js';
 import { obter, salvar } from '../../../infra/cache/cache.js';
 import { Logger } from '../../../logger/logger.js';
 import { chaveCachePremiacoes } from '../../../jobs/premiacoes/consts.js';
 import { PremiacoesJob } from '../../../jobs/premiacoes/premiacoes.job.js';
+import { Premiacao } from '../domain/premiacoes.domain.js';
 
 export class ListarPremiacoesUseCase {
   private readonly rep: IPremiacoesRepository;
@@ -12,15 +13,19 @@ export class ListarPremiacoesUseCase {
     this.rep = rep;
   }
 
-  async exec(params: { dtini: string; dtfim: string }): Promise<PremiacoesDTO[]> {
+  async exec(params: {
+    dtini: string;
+    dtfim: string;
+  }): Promise<{ sumario: SumarioDTO; premiacoes: Premiacao[] }> {
     const chave = chaveCachePremiacoes(params.dtini, params.dtfim);
 
-    const dadosCache = await this._consultarNoCache(chave);
-    if (dadosCache) {
-      return dadosCache;
-    }
+    const dadosBrutos =
+      (await this._consultarNoCache(chave)) ||
+      (await this._fallbackConsultarNoBanco(params, chave));
 
-    return await this._fallbackConsultarNoBanco(params, chave);
+    const premiacoes = this._instanciarEDetalhar(dadosBrutos);
+    const sumario = Premiacao.gerarSumario(premiacoes);
+    return { sumario, premiacoes };
   }
 
   /**
@@ -63,5 +68,13 @@ export class ListarPremiacoesUseCase {
       `[listarPremiacoes] Fallback concluído — ${dados.length} motoristas retornados e cache populado (${chave})`,
     );
     return dados;
+  }
+
+  private _instanciarEDetalhar(dados: PremiacoesDTO[]): Premiacao[] {
+    return dados.map((item) => {
+      const premiacao = new Premiacao(item);
+      premiacao.calcularPremiacoes();
+      return premiacao;
+    });
   }
 }

@@ -13,6 +13,11 @@ const EnvSchema = z.object({
   DB_USER: z.string().min(1),
   DB_PASS: z.string().min(1),
   DB_DATABASE: z.string().min(1),
+
+  PARAM_VALOR_POR_ENTREGA: z.coerce.number().min(1),
+  PARAM_VALOR_POR_KM: z.coerce.number().min(0),
+  PARAM_VALOR_POR_PESO: z.coerce.number().min(1),
+  PARAM_PERCENTUAL_ADERENCIA: z.coerce.number().min(1),
 });
 
 export const env = EnvSchema.parse(process.env);
