@@ -10,14 +10,16 @@ async function iniciar() {
   await servidor.listen({ port: env.PORTA });
   Logger.info(`[main] Servidor rodando na porta ${env.PORTA}`);
 
-  Logger.info('[main] Testando conexão com o banco de dados...');
+  Logger.info(
+    `[main] Testando conexão com o banco de dados (${env.DB_HOST}:${env.DB_PORT})...`,
+  );
   try {
     const db = await conectarBanco();
     await db.request().query('SELECT 1 AS ok');
     Logger.info('[main] Conexão com o banco de dados estabelecida com sucesso');
   } catch (erro) {
     Logger.error(
-      `[main] Falha ao conectar ao banco de dados: ${erro instanceof Error ? erro.message : String(erro)}`,
+      `[main] Falha ao conectar ao banco de dados (${env.DB_HOST}:${env.DB_PORT}): ${erro instanceof Error ? erro.message : String(erro)}`,
     );
     Logger.error('[main] Abortando inicialização por falha de conexão com o banco');
     process.exit(1);
