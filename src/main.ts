@@ -14,6 +14,9 @@ async function iniciar() {
     `[main] Testando conexão com o banco de dados (${env.DB_HOST}:${env.DB_PORT})...`,
   );
   try {
+    const dns = await import('node:dns/promises');
+    const { address } = await dns.lookup(env.DB_HOST);
+    Logger.info(`[main] DNS resolvido: ${env.DB_HOST} -> ${address}`);
     const db = await conectarBanco();
     await db.request().query('SELECT 1 AS ok');
     Logger.info('[main] Conexão com o banco de dados estabelecida com sucesso');
