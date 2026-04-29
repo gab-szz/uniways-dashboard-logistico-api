@@ -1,10 +1,17 @@
 import fastify from 'fastify';
 import rateLimit from '@fastify/rate-limit';
+import { serializerCompiler, validatorCompiler } from 'fastify-type-provider-zod';
 import { guardMiddleware } from './middlewares/guard.middleware.js';
 import motoristasRoutes from './modules/motorista/motorista.controller.js';
 import premiacoesRoutes from './modules/premiacoes/premiacoes.controller.js';
+import { swagger } from './config/swagger.js';
 
 const servidor = fastify();
+
+servidor.setValidatorCompiler(validatorCompiler);
+servidor.setSerializerCompiler(serializerCompiler);
+
+swagger(servidor);
 
 servidor.register(rateLimit, {
   max: 30,
