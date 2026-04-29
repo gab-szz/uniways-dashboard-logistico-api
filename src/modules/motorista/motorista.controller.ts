@@ -3,11 +3,7 @@ import type { ZodTypeProvider } from 'fastify-type-provider-zod';
 import { z } from 'zod';
 import { ListarMotoristasUseCase } from './use-cases/listarMotoristas.use-case.js';
 import { MssqlMotoristaRepository } from './infra/mssql.motorista.repository.js';
-
-const MotoristaSchema = z.object({
-  handle: z.number().int().describe('Identificador único do motorista'),
-  nome: z.string().nullable().describe('Nome completo do motorista'),
-});
+import { MotoristaSchema } from './dtos/motorista.dto.js';
 
 export default function motoristasRoutes(app: FastifyInstance) {
   const repository = new MssqlMotoristaRepository();

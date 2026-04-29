@@ -1,4 +1,5 @@
 import {
+  PremiacoesDTO,
   ResumoDevolucoesDTO,
   ResumoNotasFiscaisDTO,
   ResumoNotasPesoDTO,
@@ -19,4 +20,8 @@ export interface IPremiacoesRepository {
   resumoNotasPeso(periodo: PeriodoDTO): Promise<ResumoNotasPesoDTO[]>;
   resumoDevolucoes(periodo: PeriodoDTO): Promise<ResumoDevolucoesDTO[]>;
   totalEntregas(periodo: PeriodoDTO): Promise<TotalEntregasDTO[]>;
+  consultarPorMotorista(
+    periodo: PeriodoDTO,
+    handle: number,
+  ): Promise<PremiacoesDTO | null>;
 }

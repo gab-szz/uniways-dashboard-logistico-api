@@ -1,6 +1,7 @@
 import { IPremiacoesRepository, PeriodoDTO } from './premiacoes.repository.js';
 import { conectarBanco } from '../../../config/db.js';
 import {
+  PremiacoesDTO,
   TotaisViagemDTO,
   TotaisRomaneiosDTO,
   ResumoNotasFiscaisDTO,
@@ -14,6 +15,7 @@ import { resumoNotasFiscaisSQL } from './SQL/3-resumo-notas-fiscais.sql.js';
 import { resumoNotasPesoSQL } from './SQL/4-resumo-notas-peso-ent.sql.js';
 import { resumoDevolucoesSQL } from './SQL/5-resumo-devolucoes.sql.js';
 import { totalEntregasSQL } from './SQL/6-total-entregas.sql.js';
+import { premiacoesSQL } from './SQL/consultar-por-motorista.sql.js';
 
 export class MssqlPremiacoesRepository implements IPremiacoesRepository {
   async totaisViagem(periodo: PeriodoDTO) {
@@ -80,5 +82,20 @@ export class MssqlPremiacoesRepository implements IPremiacoesRepository {
       .query<TotalEntregasDTO>(totalEntregasSQL);
 
     return result.recordset;
+  }
+
+  async consultarPorMotorista(
+    periodo: PeriodoDTO,
+    handle: number,
+  ): Promise<PremiacoesDTO | null> {
+    const db = await conectarBanco();
+    const result = await db
+      .request()
+      .input('dtini', periodo.dtini)
+      .input('dtfim', periodo.dtfim)
+      .input('motorista', handle)
+      .query<PremiacoesDTO>(premiacoesSQL);
+
+    return result.recordset[0] ?? null;
   }
 }
