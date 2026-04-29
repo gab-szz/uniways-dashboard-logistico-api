@@ -1,5 +1,6 @@
 import servidor from './app.js';
 import { env } from './config/env.js';
+import { conectarBanco } from './config/db.js';
 import { atualizarCachePremiacoes } from './jobs/premiacoes/premiacoes.job.js';
 import { iniciarAgendadorPremiacoes } from './jobs/premiacoes/premiacoes.scheduler.js';
 import './jobs/premiacoes/premiacoes.worker.js';
@@ -9,7 +10,19 @@ async function iniciar() {
   await servidor.listen({ port: env.PORTA });
   Logger.info(`[main] Servidor rodando na porta ${env.PORTA}`);
 
-  Logger.info('[main] Iniciando aquecimento do cache de premiações...');
+  Logger.info('[main] Testando conexão com o banco de dados...');
+  try {
+    const db = await conectarBanco();
+    await db.request().query('SELECT 1 AS ok');
+    Logger.info('[main] Conexão com o banco de dados estabelecida com sucesso');
+  } catch (erro) {
+    Logger.error(
+      `[main] Falha ao conectar ao banco de dados: ${erro instanceof Error ? erro.message : String(erro)}`,
+    );
+    Logger.error('[main] Abortando inicialização por falha de conexão com o banco');
+    process.exit(1);
+  }
+
   try {
     await atualizarCachePremiacoes();
     Logger.info('[main] Aquecimento do cache concluído');
