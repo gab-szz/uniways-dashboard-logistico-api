@@ -8,7 +8,7 @@ const config: mssql.config = {
   password: env.DB_PASS,
   database: env.DB_DATABASE,
   options: {
-    encrypt: false,
+    encrypt: true,
     trustServerCertificate: true,
     requestTimeout: 600000, // Timeout de 10 minutos (em milissegundos)
   },
