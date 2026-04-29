@@ -19,7 +19,7 @@ async function iniciar() {
     Logger.info('[main] Conexão com o banco de dados estabelecida com sucesso');
   } catch (erro) {
     Logger.error(
-      `[main] Falha ao conectar ao banco de dados (${env.DB_HOST}:${env.DB_PORT}): ${erro instanceof Error ? erro.message : String(erro)}`,
+      `[main] Falha ao conectar ao banco de dados: ${erro instanceof Error ? erro.message : String(erro)}`,
     );
     Logger.error('[main] Abortando inicialização por falha de conexão com o banco');
     process.exit(1);
